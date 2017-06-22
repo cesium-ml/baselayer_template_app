@@ -13,6 +13,12 @@ get a batteries-included web application.  It includes:
 
 ## Customization guide
 
-1. Clone this repository
+1. Clone this repository:
+
+   `git clone --recursive git://github.com/cesium-ml/baselayer_template_app`
 
 To be completed.
+
+## Upgrading baselayer
+
+`make baselayer-update`
