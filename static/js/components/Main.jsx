@@ -11,17 +11,17 @@ import MessageHandler from 'baselayer/MessageHandler';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-function rootReducer(state={}, action) {
+function defaultReducer(state={}, action) {
     switch (action.type) {
         default:
-            console.log('Root reducer saw action:', action);
+            console.log('Default reducer saw action:', action);
             return state;
     }
 }
 
 let store = createStore(
     combineReducers({
-        root: rootReducer,
+        default: defaultReducer,
         notifications: notificationReducer
     }),
     applyMiddleware(thunk)
