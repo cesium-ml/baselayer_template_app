@@ -37,6 +37,8 @@ def add_test_yaml():
             database:
                 database: template_app_test
                 user: template_app
+                host: localhost
+                port: 5432
 
             server:
                 url: http://localhost:5000
