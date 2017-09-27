@@ -62,8 +62,7 @@ if __name__ == '__main__':
     from baselayer.app.models import init_db
     from template_app.app_server import load_config
     basedir = pathlib.Path(os.path.dirname(__file__))/'..'
-    cfg = load_config([basedir/'config.yaml.example',
-                       basedir/TEST_CONFIG])
+    cfg = load_config([basedir/TEST_CONFIG])
     init_db(**cfg['database'])
 
     clear_tables()

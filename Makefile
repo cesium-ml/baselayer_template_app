@@ -49,12 +49,12 @@ run: paths dependencies
 	@echo " - Press Ctrl-C to abort the server"
 	@echo " - Run \`make monitor\` in another terminal to restart services"
 	@echo
-	$(SUPERVISORD) -c baselayer/conf/supervisor/app.conf
+	@$(SUPERVISORD)
 
 monitor:
 	@echo "Entering supervisor control panel."
 	@echo " - Type \`status\` too see microservice status"
-	$(SUPERVISORCTL) -i status
+	@$(SUPERVISORCTL) -i status
 
 # Attach to terminal of running webserver; useful to, e.g., use pdb
 attach:
