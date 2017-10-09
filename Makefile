@@ -1,6 +1,6 @@
 SHELL = /bin/bash
-SUPERVISORD=FLAGS=$$FLAGS supervisord -c baselayer/conf/supervisor/supervisor.conf
-SUPERVISORCTL=FLAGS=$$FLAGS supervisorctl -c baselayer/conf/supervisor/supervisor.conf
+SUPERVISORD=FLAGS="--config config.yaml $$FLAGS" supervisord -c baselayer/conf/supervisor/supervisor.conf
+SUPERVISORCTL=FLAGS="--config config.yaml $$FLAGS" supervisorctl -c baselayer/conf/supervisor/supervisor.conf
 
 .DEFAULT_GOAL := run
 
@@ -21,10 +21,10 @@ dependencies: baselayer/README.md
 	@./baselayer/tools/silent_monitor.py ./baselayer/tools/check_js_deps.sh
 
 db_init:
-	@PYTHONPATH=. ./baselayer/tools/silent_monitor.py ./baselayer/tools/db_init.py
+	@PYTHONPATH=. ./baselayer/tools/silent_monitor.py ./baselayer/tools/db_init.py --config config.yaml
 
 db_clear:
-	PYTHONPATH=. ./baselayer/tools/db_clear.py
+	PYTHONPATH=. ./baselayer/tools/db_init.py --config config.yaml --force
 
 $(bundle): webpack.config.js package.json
 	$(webpack)
