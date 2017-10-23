@@ -42,7 +42,10 @@ paths:
 log: paths
 	./baselayer/tools/watch_logs.py
 
-run: paths dependencies
+fill_conf_values:
+	PYTHONPATH=. ./baselayer/tools/fill_conf_values.py
+
+run: paths dependencies fill_conf_values
 	@echo "Supervisor will now fire up various micro-services."
 	@echo
 	@echo " - Please run \`make log\` in another terminal to view logs"
@@ -63,7 +66,7 @@ attach:
 testrun: paths dependencies
 	export FLAGS="--config _test_config.yaml" && $(SUPERVISORD)
 
-debug:
+debug: fill_conf_values
 	@echo "Starting web service in debug mode"
 	@echo "Press Ctrl-D to stop"
 	@echo
@@ -74,10 +77,10 @@ debug:
 clean:
 	rm $(bundle)
 
-test_headless: paths dependencies
+test_headless: paths dependencies fill_conf_values
 	PYTHONPATH='.' xvfb-run ./tools/test_frontend.py
 
-test: paths dependencies
+test: paths dependencies fill_conf_values
 	PYTHONPATH='.' ./tools/test_frontend.py
 
 stop:
