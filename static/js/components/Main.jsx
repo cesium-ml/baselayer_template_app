@@ -39,6 +39,7 @@ class MainContent extends React.Component {
     // store.dispatch(Action.hydrate());
   }
   render() {
+    // TODO display username dynamically; currently hard-coded for tests
     return (
       <div>
         <div style={{float: "right"}}>
@@ -54,7 +55,7 @@ class MainContent extends React.Component {
         <Notifications style={{}} />
 
         <h1>Baselayer Template Application</h1>
-        <p>Hi, and welcome to Baselayer!</p>
+        <p>Hi, and welcome to Baselayer, testuser@cesium-ml.org!</p>
 
         <a href="#"
            onClick={() => store.dispatch(showNotification("Hello from Baselayer"))}>

@@ -1,25 +1,33 @@
+.DEFAULT_GOAL := run
+
 baselayer/README.md:
 	git submodule update --init --remote
 	$(MAKE) baselayer-update
 
-.PHONY: baselayer-update
+.PHONY: baselayer-update log run
 baselayer-update:
 	./baselayer/tools/submodule_update.sh
 
-log:
+log: baselayer/README.md
 	make -C baselayer log
 
-run:
+run: baselayer/README.md
 	make -C baselayer run
 
-run_testing:
+run_testing: baselayer/README.md
 	make -C baselayer run_testing
 
-run_production:
+run_production: baselayer/README.md
 	make -C baselayer run_production
 
-test_headless:
+test: baselayer/README.md
+	make -C baselayer test
+
+test_headless: baselayer/README.md
 	make -C baselayer test_headless
 
-test:
-	make -C baselayer test
+db_init: baselayer/README.md
+	make -C baselayer db_init
+
+db_clear: baselayer/README.md
+	make -C baselayer db_clear
