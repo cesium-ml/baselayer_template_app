@@ -1,0 +1,12 @@
+database:
+    database: template_app_test
+    user: template_app
+    host: localhost
+    port: 5432
+
+server:
+    url: http://localhost:5000
+    auth:
+      debug_login: True
+      google_oauth2_key:
+      google_oauth2_secret:

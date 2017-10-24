@@ -17,7 +17,7 @@ from baselayer.app import models
 
 print('Loading test configuration from _test_config.yaml')
 basedir = pathlib.Path(os.path.dirname(__file__))
-cfg = Config([(basedir/'../../config.yaml.example').absolute(),
+cfg = Config([(basedir/'../../config.yaml.defaults').absolute(),
               (basedir/'../../_test_config.yaml').absolute()])
 print('Setting test database to:', cfg['database'])
 models.init_db(**cfg['database'])
