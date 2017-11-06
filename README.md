@@ -13,12 +13,18 @@ get a batteries-included web application.  It includes:
 
 ## Customization guide
 
-1. Clone this repository:
+Clone this repository:
 
-   `git clone --recursive git://github.com/cesium-ml/baselayer_template_app`
+ `git clone --recursive git://github.com/cesium-ml/baselayer_template_app`
 
-To be completed.
+Start the application with:
 
-## Upgrading baselayer
+ `make app`
 
-`make baselayer-update`
+In another window, run `make log`.
+
+You should now be able to navigate to `http://localhost:5000`.
+
+## Documentation
+
+Please refer to http://cesium-ml.org/baselayer/
