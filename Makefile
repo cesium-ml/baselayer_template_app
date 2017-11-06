@@ -20,6 +20,9 @@ run_testing:
 run_production:
 	make -C baselayer run_production
 
+monitor:
+	make -C baselayer monitor
+
 test:
 	make -C baselayer test
 
@@ -31,5 +34,17 @@ db_init:
 
 db_clear:
 	make -C baselayer db_clear
+
+lint-install:
+	make -C baselayer lint-install
+
+lint:
+	make -C baselayer lint
+
+lint-unix:
+	make -C baselayer lint-unix
+
+lint-githook:
+	make -C baselayer lint-githook
 
 -include "baselayer/README.md"  # always clone baselayer if it doesn't exist
