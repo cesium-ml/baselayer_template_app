@@ -35,7 +35,7 @@ class ExampleComputationHandler(BaseHandler):
 
         def slow_square(x):
             time.sleep(2)
-            return x
+            return x ** 2
 
         futures = client.map(slow_square, range(int(n)))
         squares = client.gather(futures)
