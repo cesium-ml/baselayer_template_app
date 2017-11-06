@@ -2,38 +2,64 @@ const webpack = require('webpack');
 const path = require('path');
 
 const config = {
-  entry: path.resolve(__dirname, 'static/js/components/Main.jsx'),
+  entry: [
+    'babel-polyfill',
+    path.resolve(__dirname, 'static/js/components/Main.jsx')
+  ],
   output: {
     path: path.resolve(__dirname, 'static/build'),
     filename: 'bundle.js'
   },
   module: {
     rules: [
-      { test: /\.js?$/,
+      {
+        test: /\.js?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options:
         {
-          presets: ['es2015', 'react', 'stage-2'],
+          presets: ['env'],
+          plugins: [
+            'transform-object-rest-spread',
+            'transform-async-to-generator',
+            'transform-es2015-arrow-functions',
+            'transform-class-properties'
+          ],
           compact: false
         }
       },
-      { test: /\.jsx?$/,
+      {
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options:
         {
-          presets: ['es2015', 'react', 'stage-2'],
+          presets: ['env', 'react'],
+          plugins: [
+            'transform-object-rest-spread',
+            'transform-async-to-generator',
+            'transform-es2015-arrow-functions',
+            'transform-class-properties'
+          ],
           compact: false
         }
       },
-      { test: /\.css$/,
+      {
+        test: /\.css$/,
+        include: /static\/js/,
         use: [
-          'style-loader',
-          'css-loader'
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
         ]
       }
-    ],
+    ]
   },
   plugins: [
     new webpack.ProvidePlugin({
