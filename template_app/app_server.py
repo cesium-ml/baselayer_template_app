@@ -6,6 +6,9 @@ from baselayer.app.app_server import (handlers as baselayer_handlers,
 from baselayer.app.config import load_config
 
 
+from .handlers.example_computation import ExampleComputationHandler
+
+
 def make_app(cfg, baselayer_handlers, baselayer_settings):
     """Create and return a `tornado.web.Application` object with specified
     handlers and settings.
@@ -29,6 +32,7 @@ def make_app(cfg, baselayer_handlers, baselayer_settings):
 
     handlers = baselayer_handlers + [
     #    (r'/some_url(/.*)?', MyTornadoHandler),
+        (r'/example_compute', ExampleComputationHandler)
     ]
 
     settings = baselayer_settings
