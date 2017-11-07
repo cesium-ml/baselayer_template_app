@@ -4,6 +4,7 @@ const path = require('path');
 const config = {
   entry: [
     'babel-polyfill',
+    'whatwg-fetch',
     path.resolve(__dirname, 'static/js/components/Main.jsx')
   ],
   output: {
@@ -62,10 +63,6 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
-    }),
-
     // We do not use JQuery for anything in this project; but Bootstrap
     // depends on it
     new webpack.ProvidePlugin({
