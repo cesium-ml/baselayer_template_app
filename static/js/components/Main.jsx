@@ -59,12 +59,12 @@ class MainContent extends React.Component {
 
         <h3>Example of a frontend generated notification</h3>
 
-        <a
+        <button
           href="#"
           onClick={() => store.dispatch(showNotification("Hello from Baselayer"))}
         >
           Click here to display a notification
-        </a>
+        </button>
 
         <Examples />
 
