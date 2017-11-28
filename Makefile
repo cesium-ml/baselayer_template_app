@@ -1,5 +1,7 @@
 .DEFAULT_GOAL := run
 
+-include baselayer/README.md  # always clone baselayer if it doesn't exist
+
 baselayer/README.md:
 	git submodule update --init --remote
 	$(MAKE) baselayer-update
@@ -46,5 +48,3 @@ lint-unix:
 
 lint-githook:
 	make -C baselayer lint-githook
-
--include "baselayer/README.md"  # always clone baselayer if it doesn't exist

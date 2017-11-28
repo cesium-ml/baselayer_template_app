@@ -19,7 +19,7 @@ Clone this repository:
 
 Start the application with:
 
- `make app`
+ `make run`
 
 In another window, run `make log`.
 
