@@ -25,6 +25,8 @@ In another window, run `make log`.
 
 You should now be able to navigate to `http://localhost:5000`.
 
+Run `make help` for descriptions of other Make targets.
+
 ## Documentation
 
 Please refer to http://cesium-ml.org/baselayer/
