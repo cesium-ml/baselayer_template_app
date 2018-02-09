@@ -4,8 +4,4 @@
 
 baselayer/Makefile:
 	git submodule update --init --remote
-	$(MAKE) baselayer-update
 
-.PHONY: baselayer-update run log
-baselayer-update:
-	./baselayer/tools/submodule_update.sh
