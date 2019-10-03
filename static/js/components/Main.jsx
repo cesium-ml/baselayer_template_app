@@ -18,6 +18,8 @@ import Examples from '../containers/Examples';
 
 import * as Action from '../actions';
 
+import * as API from 'baselayer/API';
+
 // Set up store and message handling
 
 const store = configureStore({});
@@ -48,8 +50,8 @@ class MainContent extends React.Component {
             auth_url={`${window.location.protocol}//${this.props.root}baselayer/socket_auth_token`}
             messageHandler={messageHandler}
             dispatch={store.dispatch}
-          />
-          <Profile />
+      />
+      <Profile />
         </div>
 
         <Notifications style={{}} />
@@ -57,13 +59,22 @@ class MainContent extends React.Component {
         <h1>Baselayer Template Application</h1>
         <p>Hi, and welcome to Baselayer!</p>
 
-        <h3>Example of a frontend generated notification</h3>
+        <h3>Example of a frontend-generated notification</h3>
 
         <button
           href="#"
           onClick={() => store.dispatch(showNotification("Hello from Baselayer"))}
         >
-          Click here to display a notification
+          Frontend-generated notification
+        </button>
+
+        <h3>Example of a backend-generated notification</h3>
+
+        <button
+          href="#"
+          onClick={() => { store.dispatch(API.GET('/push_notification', 'PUSH_NOTIFICATION')); }}
+        >
+          Backend-generated notification
         </button>
 
         <Examples />

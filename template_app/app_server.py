@@ -7,6 +7,7 @@ from baselayer.app.config import load_config
 
 
 from .handlers.example_computation import ExampleComputationHandler
+from .handlers.push_notification import PushNotificationHandler
 
 
 def make_app(cfg, baselayer_handlers, baselayer_settings):
@@ -32,7 +33,8 @@ def make_app(cfg, baselayer_handlers, baselayer_settings):
 
     handlers = baselayer_handlers + [
     #    (r'/some_url(/.*)?', MyTornadoHandler),
-        (r'/example_compute', ExampleComputationHandler)
+        (r'/example_compute', ExampleComputationHandler),
+        (r'/push_notification', PushNotificationHandler)
     ]
 
     settings = baselayer_settings

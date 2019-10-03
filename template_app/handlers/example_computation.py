@@ -11,18 +11,14 @@ class ExampleComputationHandler(BaseHandler):
         try:
             squares = await squares
 
-            self.action('baselayer/SHOW_NOTIFICATION',
-                        payload={'note': 'Calculation completed'})
+            self.push_notification(note='Calculation completed')
 
             self.action('template_app/EXAMPLE_RESULT',
                         payload={'squares': squares})
 
         except Exception as e:
-            self.action(
-                'baselayer/SHOW_NOTIFICATION',
-                payload={'note': 'Error executing calculation: ' + str(e),
-                         'type': 'error'}
-            )
+            self.push_notification('Error executing calculation: ' + str(e),
+                                   'error')
 
     @tornado.web.authenticated
     async def post(self):
@@ -43,7 +39,4 @@ class ExampleComputationHandler(BaseHandler):
         loop = tornado.ioloop.IOLoop.current()
         loop.spawn_callback(self._await_calculation, squares)
 
-        self.success(
-            action='baselayer/SHOW_NOTIFICATION',
-            payload={'note': 'Computation n={} submitted'.format(n)}
-        )
+        self.push_notification('Computation n={} submitted'.format(n))
