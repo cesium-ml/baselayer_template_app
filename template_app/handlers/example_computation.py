@@ -15,10 +15,12 @@ class ExampleComputationHandler(BaseHandler):
 
             self.action('template_app/EXAMPLE_RESULT',
                         payload={'squares': squares})
+            return self.success()
 
         except Exception as e:
             self.push_notification('Error executing calculation: ' + str(e),
                                    'error')
+            return self.error('Error executing calculation: ' + str(e))
 
     @tornado.web.authenticated
     async def post(self):
@@ -40,3 +42,4 @@ class ExampleComputationHandler(BaseHandler):
         loop.spawn_callback(self._await_calculation, squares)
 
         self.push_notification('Computation n={} submitted'.format(n))
+        return self.success()
