@@ -1,7 +1,10 @@
-.DEFAULT_GOAL := run
-
--include baselayer/Makefile  # always clone baselayer if it doesn't exist
+.DEFAULT_GOAL = help
 
 baselayer/Makefile:
 	git submodule update --init --remote
 
+# https://www.gnu.org/software/make/manual/html_node/Overriding-Makefiles.html
+%: baselayer/Makefile force
+	@$(MAKE) --no-print-directory -C . -f baselayer/Makefile $@
+
+.PHONY: Makefile force
