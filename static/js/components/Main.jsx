@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 
+import messageHandler from 'baselayer/MessageHandler';
 import WebSocket from 'baselayer/components/WebSocket';
 import { Notifications, showNotification } from 'baselayer/components/Notifications';
 
 import configureStore from '../store';
-import CustomMessageHandler from '../CustomMessageHandler';
+import '../customMessageHandler';
 
 // Components and containers
 
@@ -23,10 +24,7 @@ import * as API from 'baselayer/API';
 // Set up store and message handling
 
 const store = configureStore({});
-
-const messageHandler = (
-  new CustomMessageHandler(store.dispatch, store.getState)
-);
+messageHandler.init(store.dispatch, store.getState);
 
 
 class MainContent extends React.Component {
