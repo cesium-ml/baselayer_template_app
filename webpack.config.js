@@ -1,8 +1,10 @@
-const webpack = require('webpack');
 const path = require('path');
+
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
   entry: [
+    'whatwg-fetch',
     'babel-polyfill',
     path.resolve(__dirname, 'static/js/components/Main.jsx')
   ],
@@ -62,23 +64,23 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.ProvidePlugin({
-      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
-    }),
 
-    // We do not use JQuery for anything in this project; but Bootstrap
-    // depends on it
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-    })
+    // Uncomment the following line to enable bundle size analysis
+    //    new BundleAnalyzerPlugin()
+
   ],
   resolve: {
     alias: {
       baselayer: path.resolve(__dirname, 'baselayer/static/js')
     },
     extensions: ['.js', '.jsx']
-  }
+  },
+  watchOptions: {
+    ignored: /node_modules/,
+    // Set to true if you have trouble with JS change monitoring
+    poll: false
+  },
+  mode: 'development'
 };
 
 module.exports = config;
