@@ -10,7 +10,7 @@ const config = {
   ],
   output: {
     path: path.resolve(__dirname, 'static/build'),
-    filename: 'bundle.js'
+    filename: 'main.bundle.js'
   },
   module: {
     rules: [
