@@ -10,11 +10,14 @@ class Examples extends React.Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    this.props.compute(this.n.value);
+
+    const { compute } = this.props;
+    compute(this.n.value);
   }
 
   render() {
-    const resultItems = this.props.results.map((result, index) => (
+    const { results } = this.props;
+    const resultItems = results.map((result, index) => (
       // eslint-disable-next-line react/no-array-index-key
       <li key={index}>{result.join(", ")}</li>
     ));
@@ -25,7 +28,13 @@ class Examples extends React.Component {
 
         <form onSubmit={this._handleSubmit}>
           Calculate squares of &nbsp;
-          <input type="text" defaultValue="5" size="2" ref={(n) => { this.n = n; }} /> numbers. &nbsp;
+          <input
+            type="text"
+            defaultValue="5"
+            size="2"
+            ref={(n) => { this.n = n; }}
+          />
+          numbers. &nbsp;
           <input type="submit" value="Go!" />
         </form>
 

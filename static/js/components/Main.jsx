@@ -7,6 +7,7 @@ import messageHandler from 'baselayer/MessageHandler';
 import WebSocket from 'baselayer/components/WebSocket';
 import { Notifications, showNotification } from 'baselayer/components/Notifications';
 
+import * as API from 'baselayer/API';
 import configureStore from '../store';
 import '../customMessageHandler';
 
@@ -19,7 +20,6 @@ import Examples from '../containers/Examples';
 
 import * as Action from '../actions';
 
-import * as API from 'baselayer/API';
 
 // Set up store and message handling
 
@@ -38,18 +38,19 @@ class MainContent extends React.Component {
   }
 
   render() {
+    const { root } = this.props;
     return (
       <div>
 
         <div style={{ float: "right" }}>
           <b>WebSocket connection: </b>
           <WebSocket
-            url={`${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${this.props.root}websocket`}
-            auth_url={`${window.location.protocol}//${this.props.root}baselayer/socket_auth_token`}
+            url={`${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${root}websocket`}
+            auth_url={`${window.location.protocol}//${root}baselayer/socket_auth_token`}
             messageHandler={messageHandler}
             dispatch={store.dispatch}
-      />
-      <Profile />
+          />
+          <Profile />
         </div>
 
         <Notifications style={{}} />
@@ -60,6 +61,7 @@ class MainContent extends React.Component {
         <h3>Example of a frontend-generated notification</h3>
 
         <button
+          type="button"
           href="#"
           onClick={() => store.dispatch(showNotification("Hello from Baselayer"))}
         >
@@ -69,6 +71,7 @@ class MainContent extends React.Component {
         <h3>Example of a backend-generated notification</h3>
 
         <button
+          type="button"
           href="#"
           onClick={() => { store.dispatch(API.GET('/push_notification', 'PUSH_NOTIFICATION')); }}
         >

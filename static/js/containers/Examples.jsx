@@ -5,15 +5,15 @@ import * as API from 'baselayer/API';
 import Examples from '../components/Examples';
 
 
-const mapStateToProps = (state, ownProps) => (
+const mapStateToProps = (state) => (
   {
     results: state.examples.results
   }
 );
 
-const mapDispatchToProps = (dispatch, ownProps) => (
+const mapDispatchToProps = (dispatch) => (
   {
-    compute: n => dispatch(
+    compute: (n) => dispatch(
       API.POST('/example_compute', 'template_app/SEND_COMPUTE', { n })
     )
   }
