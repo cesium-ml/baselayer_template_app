@@ -3,14 +3,17 @@ const path = require('path');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
-  entry: [
-    'whatwg-fetch',
-    'babel-polyfill',
-    path.resolve(__dirname, 'static/js/components/Main.jsx')
-  ],
+  entry: {
+    main: [
+      '@babel/polyfill',
+      path.resolve(__dirname, 'static/js/components/Main.jsx')
+    ]
+  },
   output: {
     path: path.resolve(__dirname, 'static/build'),
-    filename: 'main.bundle.js'
+    publicPath: '/static/build/',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].[chunkHash].bundle.js'
   },
   module: {
     rules: [
