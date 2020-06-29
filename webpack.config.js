@@ -18,33 +18,17 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.(js|jsx)?$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        loader: 'babel-loader',
         options:
         {
-          presets: ['env'],
+          presets: ["@babel/preset-env", "@babel/preset-react"],
           plugins: [
-            'transform-object-rest-spread',
-            'transform-async-to-generator',
-            'transform-es2015-arrow-functions',
-            'transform-class-properties'
-          ],
-          compact: false
-        }
-      },
-      {
-        test: /\.jsx?$/,
-        include: /static\/js/,
-        loader: 'babel-loader',
-        options:
-        {
-          presets: ['env', 'react'],
-          plugins: [
-            'transform-object-rest-spread',
-            'transform-async-to-generator',
-            'transform-es2015-arrow-functions',
-            'transform-class-properties'
+            '@babel/plugin-transform-async-to-generator',
+            '@babel/plugin-transform-arrow-functions',
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-proposal-object-rest-spread'
           ],
           compact: false
         }
