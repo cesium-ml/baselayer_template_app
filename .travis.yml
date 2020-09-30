@@ -35,7 +35,6 @@
 
 
 language: python
-dist: trusty
 sudo: required
 cache:
   # See http://docs.travis-ci.com/user/caching/#pip-cache
@@ -62,7 +61,7 @@ addons:
 
 matrix:
   include:
-    - python: 3.6
+    - python: 3.7
       env:
         - TEST_TARGET=test
 
