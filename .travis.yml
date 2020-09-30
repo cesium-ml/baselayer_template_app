@@ -58,8 +58,6 @@ addons:
     - libnss3
     - libgconf-2-4
   postgresql: "9.6"
-services:
-  - xvfb
 
 matrix:
   include:
