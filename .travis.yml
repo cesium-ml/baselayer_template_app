@@ -35,7 +35,6 @@
 
 
 language: python
-dist: trusty
 sudo: required
 cache:
   # See http://docs.travis-ci.com/user/caching/#pip-cache
@@ -59,10 +58,12 @@ addons:
     - libnss3
     - libgconf-2-4
   postgresql: "9.6"
+services:
+  - xvfb
 
 matrix:
   include:
-    - python: 3.6
+    - python: 3.7
       env:
         - TEST_TARGET=test
 
