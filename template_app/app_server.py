@@ -1,16 +1,14 @@
 import tornado.web
 
 from baselayer.app import models, model_util
-from baselayer.app.app_server import (handlers as baselayer_handlers,
-                                      settings as baselayer_settings)
-from baselayer.app.config import load_config
-
 
 from .handlers.example_computation import ExampleComputationHandler
 from .handlers.push_notification import PushNotificationHandler
 
 
-def make_app(cfg, baselayer_handlers, baselayer_settings):
+def make_app(
+        cfg, baselayer_handlers, baselayer_settings, process=None, env=None
+):
     """Create and return a `tornado.web.Application` object with specified
     handlers and settings.
 
@@ -23,6 +21,11 @@ def make_app(cfg, baselayer_handlers, baselayer_settings):
         Tornado handlers needed for baselayer to function.
     baselayer_settings : cfg
         Settings needed for baselayer to function.
+    process : int
+        When launching multiple app servers, which number is this?
+    env : dict
+        Environment in which the app was launched.  Currently only has
+        one key, 'debug'---true if launched with `--debug`.
 
     """
     if cfg['cookie_secret'] == 'abc01234':
@@ -32,7 +35,7 @@ def make_app(cfg, baselayer_handlers, baselayer_settings):
         print('!' * 80)
 
     handlers = baselayer_handlers + [
-    #    (r'/some_url(/.*)?', MyTornadoHandler),
+        #    (r'/some_url(/.*)?', MyTornadoHandler),
         (r'/example_compute', ExampleComputationHandler),
         (r'/push_notification', PushNotificationHandler)
     ]
@@ -42,7 +45,10 @@ def make_app(cfg, baselayer_handlers, baselayer_settings):
 
     app = tornado.web.Application(handlers, **settings)
     models.init_db(**cfg['database'])
-    model_util.create_tables()
+
+    if process == 0:
+        model_util.create_tables(add=env.debug)
+
     app.cfg = cfg
 
     return app
