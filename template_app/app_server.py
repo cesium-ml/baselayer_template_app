@@ -1,6 +1,7 @@
 import tornado.web
 
 from baselayer.app import models, model_util
+from . import models as blt_models
 
 from .handlers.example_computation import ExampleComputationHandler
 from .handlers.push_notification import PushNotificationHandler
