@@ -46,7 +46,8 @@ def test_retrieved_datetimes_have_timezone_info():
     DBSession.add(user)
     DBSession.commit()
 
-    # Verify that datetimes retrieved from the database are tagged with timezone info
+    # Verify that datetimes retrieved from the database are tagged with
+    # timezone info
     user = DBSession.query(User).filter(User.username == username).first()
     assert user is not None
     assert user.created_at.tzinfo is not None
