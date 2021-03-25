@@ -101,6 +101,10 @@ jobs:
               host: localhost
               port: 5432
               password: anything
+            server:
+              url: http://localhost:5000
+              auth:
+                debug_login: True
           EOF
 
           echo "localhost:5432:*:template_app:anything" > ~/.pgpass
