@@ -106,9 +106,6 @@ jobs:
           echo "localhost:5432:*:template_app:anything" > ~/.pgpass
           chmod 600 ~/.pgpass
 
-          createdb -h localhost -U template_app template_app
-          psql -U template_app -h localhost -c "GRANT ALL PRIVILEGES ON DATABASE template_app TO template_app;" template_app
-
           createdb -h localhost -U template_app template_app_test
           psql -U template_app -h localhost -c "GRANT ALL PRIVILEGES ON DATABASE template_app_test TO template_app;" template_app_test
 
