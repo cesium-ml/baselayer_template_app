@@ -22,6 +22,19 @@ basedir = pathlib.Path(os.path.dirname(__file__))/'../..'
 cfg = load_config([basedir/'test_config.yaml'])
 set_server_url(f'http://localhost:{cfg["ports.app"]}')
 
+# set up a hook to be able to check if a test has failed
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    # execute all other hooks to obtain the report object
+
+    outcome = yield
+    rep = outcome.get_result()
+
+    # set a report attribute for each phase of a call, which can
+    # be "setup", "call", "teardown"
+
+    setattr(item, "rep_" + rep.when, rep)
+
 # check if a test has failed
 @pytest.fixture(scope="function", autouse=True)
 def test_failed_check(request):
