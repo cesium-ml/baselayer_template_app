@@ -39,33 +39,11 @@ def pytest_runtest_makereport(item, call):
 # check if a test has failed
 @pytest.fixture(scope="function", autouse=True)
 def test_failed_check(request):
-
-    gecko = pathlib.Path('geckodriver.log')
-    gecko.touch(exist_ok=True)
-
-    # get the number of bytes in the file currently
-    log_bytes = os.path.getsize(gecko)
-
-    # add a separator to the geckodriver logs
-    with open(gecko, 'a') as f:
-        f.write(f'BEGIN {request.node.nodeid}\n')
-
     yield
-    # request.node is an "item" because we use the default
-    # "function" scope
-
-    # add a separator to the geckodriver logs
-    with open(gecko, 'a') as f:
-        f.write(f'END {request.node.nodeid}\n')
-
     if request.node.rep_call.failed and 'driver' in request.node.funcargs:
         webdriver = request.node.funcargs['driver']
         take_screenshot_and_page_source(webdriver, request.node.nodeid)
 
-    # delete the interstitial data from the geckodriver log by
-    # truncating the file back to its original number of bytes
-    with open(gecko, 'a') as f:
-        f.truncate(log_bytes)
 
 
 # make a screenshot with a name of the test, date and time.
@@ -76,24 +54,6 @@ def take_screenshot_and_page_source(webdriver, nodeid):
     ).replace(":", "_")
     file_name = os.path.join(os.path.dirname(__file__), '../../test-results', file_name)
     pathlib.Path(file_name).parent.mkdir(parents=True, exist_ok=True)
-
     webdriver.save_screenshot(file_name)
     with open(file_name.replace('png', 'html'), 'w') as f:
         f.write(webdriver.page_source)
-
-    file_name = (
-        f'{nodeid}_{datetime.today().strftime("%Y-%m-%d_%H:%M")}.console.log'.replace(
-            "/", "_"
-        ).replace(":", "_")
-    )
-    file_name = os.path.join(
-        os.path.dirname(__file__), '../../webdriver-console', file_name
-    )
-    pathlib.Path(file_name).parent.mkdir(parents=True, exist_ok=True)
-
-    with open(file_name, 'w') as f, open('geckodriver.log', 'r') as gl:
-        lines = gl.readlines()
-        revlines = list(reversed(lines))
-        istart = revlines.index(f'BEGIN {nodeid}\n')
-        iend = revlines.index(f'END {nodeid}\n')
-        f.write('\n'.join(list(reversed(revlines[iend : (istart + 1)]))))  # noqa: E203

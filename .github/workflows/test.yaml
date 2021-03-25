@@ -45,7 +45,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          ref: master
           submodules: true
 
       - name: Install system dependencies
@@ -102,7 +101,6 @@ jobs:
               port: 5432
               password: anything
             server:
-              url: http://localhost:5000
               auth:
                 debug_login: True
           EOF
