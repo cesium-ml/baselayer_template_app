@@ -3,6 +3,7 @@
 import pytest
 import os
 import pathlib
+from datetime import datetime
 import distutils.spawn
 import types
 import shutil
@@ -39,7 +40,7 @@ def pytest_runtest_makereport(item, call):
 @pytest.fixture(scope="function", autouse=True)
 def test_failed_check(request):
 
-    gecko = Path('geckodriver.log')
+    gecko = pathlib.Path('geckodriver.log')
     gecko.touch(exist_ok=True)
 
     # get the number of bytes in the file currently
@@ -74,7 +75,7 @@ def take_screenshot_and_page_source(webdriver, nodeid):
         "/", "_"
     ).replace(":", "_")
     file_name = os.path.join(os.path.dirname(__file__), '../../test-results', file_name)
-    Path(file_name).parent.mkdir(parents=True, exist_ok=True)
+    pathlib.Path(file_name).parent.mkdir(parents=True, exist_ok=True)
 
     webdriver.save_screenshot(file_name)
     with open(file_name.replace('png', 'html'), 'w') as f:
@@ -88,7 +89,7 @@ def take_screenshot_and_page_source(webdriver, nodeid):
     file_name = os.path.join(
         os.path.dirname(__file__), '../../webdriver-console', file_name
     )
-    Path(file_name).parent.mkdir(parents=True, exist_ok=True)
+    pathlib.Path(file_name).parent.mkdir(parents=True, exist_ok=True)
 
     with open(file_name, 'w') as f, open('geckodriver.log', 'r') as gl:
         lines = gl.readlines()
