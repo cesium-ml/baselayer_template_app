@@ -17,6 +17,7 @@ def test_input_timezone_is_respected():
     user = User(username=username, created_at=pdt_2pm)
     DBSession.add(user)
     DBSession.commit()
+    assert user.created_at == pdt_2pm
 
     # Since the User was created at 2PM (PDT), which is 7 hours behind UTC,
     # the database should have stored 9PM that day as the created_at.
