@@ -1,16 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from "react-redux";
 
-const Profile = ({ username }) => (
-  <div>
-    <b>Username:</b>
-    {' '}
-    { username }
-  </div>
-);
+const Profile = () => {
+  const { username } = useSelector((state) => state.profile);
 
-Profile.propTypes = {
-  username: PropTypes.string.isRequired
+  return (
+    <div>
+      <b>Username:</b>
+      {' '}
+      { username }
+    </div>
+  );
 };
 
 export default Profile;
