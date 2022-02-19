@@ -11,7 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.common.exceptions import TimeoutException
-from seleniumrequests.request import RequestMixin
+from seleniumrequests.request import RequestSessionMixin
 from baselayer.app.config import load_config
 from baselayer.app.test_util import (driver, MyCustomWebDriver, reset_state,
                                      set_server_url)
