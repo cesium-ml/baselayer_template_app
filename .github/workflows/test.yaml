@@ -32,19 +32,23 @@ jobs:
         with:
           python-version: "3.8"
 
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cache
-            ~/.local
-            ~/.npm
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           submodules: true
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('package.json') }}
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/pip
+          key: ${{ runner.os }}-${{ hashFiles('**/requirements*.txt') }}
 
       - name: Install system dependencies
         run: |
@@ -59,7 +63,7 @@ jobs:
           export PATH=${NPM_PACKAGES}/bin:$PATH
           export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
-          sudo npm -g install npm@next
+          sudo npm -g install npm@latest
 
           which python; python --version
           echo npm $(npm --version)
