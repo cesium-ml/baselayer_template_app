@@ -28,7 +28,7 @@ def make_app(
         one key, 'debug'---true if launched with `--debug`.
 
     """
-    if cfg['cookie_secret'] == 'abc01234':
+    if baselayer_settings['cookie_secret'] == 'abc01234':
         print('!' * 80)
         print('  Your server is insecure. Please update the secret string ')
         print('  in the configuration file!')
