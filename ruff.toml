@@ -1,0 +1,9 @@
+line-length = 88
+target-version = 'py38'
+select = ['F', 'E', 'W', 'UP']
+exclude = [
+    '.git',
+    'node_modules',
+    'baselayer',
+    '.ruff_cache'
+]

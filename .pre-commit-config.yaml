@@ -22,12 +22,10 @@ repos:
       - id: black
         pass_filenames: true
         exclude: baselayer|node_modules|static
-  - repo: https://github.com/pycqa/flake8
-    rev: 3.8.4
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: 6ba454799f284b13ccd53ca2adaf4848da6d3509 # v0.0.240
     hooks:
-      - id: flake8
-        pass_filenames: true
-        exclude: baselayer|node_modules|static|__init__.py
+      - id: ruff
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: "v2.3.0" # Use the sha or tag you want to point at
     hooks:
