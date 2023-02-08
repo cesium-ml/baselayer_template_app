@@ -19,6 +19,7 @@ repos:
     rev: 50c5478ed9e10bf360335449280cf2a67f4edb7a # v2.7.1
     hooks:
       - id: prettier
+        exclude: ".*config.yaml"
   - repo: local
     hooks:
       - id: ESLint
