@@ -38,8 +38,11 @@ repos:
     hooks:
       - id: eslint
         additional_dependencies:
+          # Keep up to date with package.json
           - eslint@8.33.0
           - "@babel/eslint-parser@7.19.1"
+          - "@babel/preset-env@7.11.0"
+          - "@babel/preset-react@7.12.1"
           - eslint-config-airbnb@18.2.0
           - eslint-config-prettier@8.6.0
           - eslint-plugin-import@2.22.1
