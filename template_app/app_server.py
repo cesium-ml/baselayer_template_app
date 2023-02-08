@@ -1,14 +1,12 @@
 import tornado.web
 
-from baselayer.app import models, model_util
+from baselayer.app import model_util, models
 
 from .handlers.example_computation import ExampleComputationHandler
 from .handlers.push_notification import PushNotificationHandler
 
 
-def make_app(
-        cfg, baselayer_handlers, baselayer_settings, process=None, env=None
-):
+def make_app(cfg, baselayer_handlers, baselayer_settings, process=None, env=None):
     """Create and return a `tornado.web.Application` object with specified
     handlers and settings.
 
@@ -28,23 +26,23 @@ def make_app(
         one key, 'debug'---true if launched with `--debug`.
 
     """
-    if baselayer_settings['cookie_secret'] == 'abc01234':
-        print('!' * 80)
-        print('  Your server is insecure. Please update the secret string ')
-        print('  in the configuration file!')
-        print('!' * 80)
+    if baselayer_settings["cookie_secret"] == "abc01234":
+        print("!" * 80)
+        print("  Your server is insecure. Please update the secret string ")
+        print("  in the configuration file!")
+        print("!" * 80)
 
     handlers = baselayer_handlers + [
         #    (r'/some_url(/.*)?', MyTornadoHandler),
-        (r'/example_compute', ExampleComputationHandler),
-        (r'/push_notification', PushNotificationHandler)
+        (r"/example_compute", ExampleComputationHandler),
+        (r"/push_notification", PushNotificationHandler),
     ]
 
     settings = baselayer_settings
     settings.update({})  # Specify any additional Tornado settings here
 
     app = tornado.web.Application(handlers, **settings)
-    models.init_db(**cfg['database'])
+    models.init_db(**cfg["database"])
 
     if process == 0:
         model_util.create_tables(add=env.debug)

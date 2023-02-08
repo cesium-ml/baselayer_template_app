@@ -1,23 +1,16 @@
-'''Test fixture configuration.'''
+"""Test fixture configuration."""
 
-import pytest
 import os
 import pathlib
-import distutils.spawn
-import types
-import shutil
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-from selenium.common.exceptions import TimeoutException
-from seleniumrequests.request import RequestsSessionMixin
-from baselayer.app.config import load_config
-from baselayer.app.test_util import (driver, MyCustomWebDriver, reset_state,
-                                     set_server_url)
 
+from baselayer.app.config import load_config as _load_config
 
-print('Loading test configuration from test_config.yaml')
-basedir = pathlib.Path(os.path.dirname(__file__))/'../..'
-cfg = load_config([basedir/'test_config.yaml'])
-set_server_url(f'http://localhost:{cfg["ports.app"]}')
+# Fixtures for other tests
+from baselayer.app.test_util import MyCustomWebDriver, driver, reset_state  # noqa: F401
+from baselayer.app.test_util import set_server_url as _set_server_url
+
+# Server connection configuration
+print("Loading test configuration from test_config.yaml")
+basedir = pathlib.Path(os.path.dirname(__file__)) / "../.."
+cfg = _load_config([basedir / "test_config.yaml"])
+_set_server_url(f'http://localhost:{cfg["ports.app"]}')

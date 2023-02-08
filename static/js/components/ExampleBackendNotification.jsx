@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import * as API from 'baselayer/API';
+import * as API from "baselayer/API";
 
 const ExampleBackendNotification = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,9 @@ const ExampleBackendNotification = () => {
       <button
         type="button"
         href="#"
-        onClick={() => { dispatch(API.GET('/push_notification', 'PUSH_NOTIFICATION')); }}
+        onClick={() => {
+          dispatch(API.GET("/push_notification", "PUSH_NOTIFICATION"));
+        }}
       >
         Backend-generated notification
       </button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useSelector } from "react-redux";
 
 const Profile = () => {
@@ -6,9 +6,7 @@ const Profile = () => {
 
   return (
     <div>
-      <b>Username:</b>
-      {' '}
-      { username }
+      <b>Username:</b> {username}
     </div>
   );
 };

@@ -1,11 +1,10 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import { reducer as notificationsReducer } from 'baselayer/components/Notifications';
+import { reducer as notificationsReducer } from "baselayer/components/Notifications";
 
-import * as Action from './actions';
+import * as Action from "./actions";
 
-
-export function profileReducer(state={ username: '' }, action) {
+export function profileReducer(state = { username: "" }, action) {
   switch (action.type) {
     case Action.FETCH_USER_PROFILE_OK:
       return action.data;
@@ -14,7 +13,7 @@ export function profileReducer(state={ username: '' }, action) {
   }
 }
 
-export function exampleReducer(state={ results: [] }, action) {
+export function exampleReducer(state = { results: [] }, action) {
   switch (action.type) {
     case Action.EXAMPLE_RESULT: {
       const { results } = state;
@@ -30,7 +29,7 @@ export function exampleReducer(state={ results: [] }, action) {
 const root = combineReducers({
   profile: profileReducer,
   notifications: notificationsReducer,
-  examples: exampleReducer
+  examples: exampleReducer,
   // add your own reducers here
 });
 

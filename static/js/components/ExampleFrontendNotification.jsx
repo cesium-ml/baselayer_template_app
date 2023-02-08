@@ -1,8 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { showNotification } from 'baselayer/components/Notifications';
-
+import { showNotification } from "baselayer/components/Notifications";
 
 const ExampleFrontendNotification = () => {
   const dispatch = useDispatch();

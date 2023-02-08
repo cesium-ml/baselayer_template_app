@@ -1,7 +1,7 @@
 # Baselayer Template App
 
 This template application shows how to leverage Cesium's BaseLayer to
-get a batteries-included web application.  It includes:
+get a batteries-included web application. It includes:
 
 - A Tornado-based Python web application that can be customized to your liking
 - WebSockets
@@ -15,11 +15,11 @@ get a batteries-included web application.  It includes:
 
 Clone this repository:
 
- `git clone --recursive git://github.com/cesium-ml/baselayer_template_app`
+`git clone --recursive git://github.com/cesium-ml/baselayer_template_app`
 
 Start the application with:
 
- `make run`
+`make run`
 
 In another window, run `make log`.
 
