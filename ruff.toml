@@ -1,6 +1,6 @@
 line-length = 88
 target-version = 'py38'
-select = ['F', 'E', 'W', 'UP']
+select = ['F', 'E', 'W', 'UP', 'I']
 exclude = [
     '.git',
     'node_modules',
