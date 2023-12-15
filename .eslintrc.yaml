@@ -7,7 +7,7 @@ parserOptions:
     presets: ["@babel/preset-env", "@babel/preset-react"]
 env:
   browser: true
-extends: ["airbnb", "plugin:react/recommended", "prettier"]
+extends: ["airbnb", "airbnb/hooks", "plugin:react/recommended", "prettier"]
 plugins: [import, react, react-hooks]
 settings:
   import/resolver:
