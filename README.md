@@ -17,6 +17,10 @@ Clone this repository:
 
 `git clone --recursive git://github.com/cesium-ml/baselayer_template_app`
 
+Initialize the database (see database permissions below):
+
+`make db_init`
+
 Start the application with:
 
 `make run`
@@ -29,4 +33,4 @@ Run `make help` for descriptions of other Make targets.
 
 ## Documentation
 
-Please refer to http://cesium-ml.org/baselayer/
+Please refer to http://cesium-ml.org/baselayer/ for more detailed instructions.
