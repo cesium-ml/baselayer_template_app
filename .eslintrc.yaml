@@ -25,3 +25,4 @@ rules:
   no-param-reassign: 0
   react/jsx-curly-newline: 0
   default-param-last: 0
+  react/function-component-definition: 0
