@@ -4,10 +4,7 @@ const path = require("path");
 
 const config = {
   entry: {
-    main: [
-      "@babel/polyfill",
-      path.resolve(__dirname, "static/js/components/Main.jsx"),
-    ],
+    main: [path.resolve(__dirname, "static/js/components/Main.jsx")],
   },
   output: {
     path: path.resolve(__dirname, "static/build"),
@@ -23,12 +20,7 @@ const config = {
         exclude: /node_modules/,
         options: {
           presets: ["@babel/preset-env", "@babel/preset-react"],
-          plugins: [
-            "@babel/plugin-transform-async-to-generator",
-            "@babel/plugin-transform-arrow-functions",
-            "@babel/plugin-proposal-class-properties",
-            "@babel/plugin-proposal-object-rest-spread",
-          ],
+          plugins: ["@babel/plugin-transform-async-to-generator"],
           compact: false,
         },
       },
@@ -58,6 +50,7 @@ const config = {
       baselayer: path.resolve(__dirname, "baselayer/static/js"),
     },
     extensions: [".js", ".jsx"],
+    modules: [path.resolve("./node_modules")],
   },
   watchOptions: {
     ignored: /node_modules/,
