@@ -7,13 +7,10 @@ parserOptions:
     presets: ["@babel/preset-env", "@babel/preset-react"]
 env:
   browser: true
-extends: ["airbnb", "plugin:react/recommended", "prettier"]
+extends: ["airbnb", "airbnb/hooks", "plugin:react/recommended", "prettier"]
 plugins: [import, react, react-hooks]
 settings:
-  import/resolver:
-    node: {}
-    webpack:
-      config: webpack.config.js
+  import/resolver: webpack
   react:
     version: detect
 rules:
@@ -27,3 +24,5 @@ rules:
   react/jsx-one-expression-per-line: 0
   no-param-reassign: 0
   react/jsx-curly-newline: 0
+  default-param-last: 0
+  react/function-component-definition: 0

@@ -20,11 +20,9 @@ repos:
     hooks:
       - id: prettier
         exclude: ".*config.yaml"
-  - repo: local
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.55.0
     hooks:
-      - id: ESLint
-        name: ESLint
-        entry: npx eslint -c .eslintrc.yaml --fix
-        language: system
-        files: \.[j]sx?$
+      - id: eslint
+        files: ^static/js/.*\.[jt]sx?$
         types: [file]

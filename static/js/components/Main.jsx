@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Provider } from "react-redux";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import messageHandler from "baselayer/MessageHandler";
 import WebSocket from "baselayer/components/WebSocket";
@@ -57,9 +57,10 @@ MainContent.propTypes = {
   root: PropTypes.string.isRequired,
 };
 
-ReactDOM.render(
+const container = document.getElementById("content");
+const root = createRoot(container);
+root.render(
   <Provider store={store}>
     <MainContent root={window.location.host + window.location.pathname} />
-  </Provider>,
-  document.getElementById("content")
+  </Provider>
 );
