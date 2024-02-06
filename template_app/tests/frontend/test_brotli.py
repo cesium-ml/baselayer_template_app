@@ -5,7 +5,7 @@ import requests
 from baselayer.app.config import load_config as _load_config
 
 print("Loading test configuration from test_config.yaml")
-basedir = pathlib.Path(os.path.dirname(__file__)) / "../.."
+basedir = pathlib.Path(os.path.dirname(__file__)) / "../../.."
 cfg = _load_config([basedir / "test_config.yaml"])
 server_url = f'http://localhost:{cfg["ports.app"]}'
 
