@@ -1,10 +1,8 @@
 import os
 import pathlib
 import requests
-import pytest
 
 from baselayer.app.config import load_config as _load_config
-from baselayer.tools.fill_conf_values import nginx_brotli_installed
 
 basedir = pathlib.Path(os.path.dirname(__file__)) / "../../.."
 cfg = _load_config([basedir / "test_config.yaml"])
