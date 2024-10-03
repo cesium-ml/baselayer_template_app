@@ -42,7 +42,7 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-jsx-a11y": "6.9.0",
-    "eslint-plugin-react": "7.34.3",
+    "eslint-plugin-react": "7.37.1",
     "eslint-plugin-react-hooks": "4.6.2",
     "@rspack/cli": "1.0.8",
     "@rspack/core": "1.0.8"
