@@ -29,7 +29,7 @@ jobs:
           python-version: "3.8"
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           submodules: true
@@ -129,7 +129,7 @@ jobs:
           pre-commit run -a
 
       - name: Upload logs
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           name: logs
