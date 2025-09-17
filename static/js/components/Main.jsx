@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Provider } from "react-redux";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 import messageHandler from "baselayer/MessageHandler";
 import WebSocket from "baselayer/components/WebSocket";
 import { Notifications } from "baselayer/components/Notifications";
 
-import configureStore from "../store";
+import { store } from "../store";
 import "../customMessageHandler";
 
 // Components and containers
@@ -21,7 +21,6 @@ import * as Action from "../actions";
 
 // Set up store and message handling
 
-const store = configureStore({});
 messageHandler.init(store.dispatch, store.getState);
 
 const MainContent = ({ root }) => {
@@ -57,9 +56,9 @@ MainContent.propTypes = {
   root: PropTypes.string.isRequired,
 };
 
-ReactDOM.render(
+const content = ReactDOM.createRoot(document.getElementById("content"));
+content.render(
   <Provider store={store}>
     <MainContent root={window.location.host + window.location.pathname} />
-  </Provider>,
-  document.getElementById("content")
+  </Provider>
 );
