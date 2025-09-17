@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import * as API from "baselayer/API";
 
-const ExampleCompute = () => {
+function ExampleCompute() {
   const [number, setNumber] = useState("5");
   const dispatch = useDispatch();
 
@@ -36,10 +36,10 @@ const ExampleCompute = () => {
       <form onSubmit={handleSubmit}>
         Calculate squares of first &nbsp;
         <input
-          type="text"
-          value={number}
           onChange={(e) => setNumber(e.target.value)}
           size="2"
+          type="text"
+          value={number}
         />
         &nbsp;numbers. &nbsp;
         <input type="submit" value="Go!" />
@@ -49,6 +49,6 @@ const ExampleCompute = () => {
       <ul>{resultItems}</ul>
     </div>
   );
-};
+}
 
 export default ExampleCompute;

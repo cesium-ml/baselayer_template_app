@@ -1,6 +1,8 @@
-const path = require("path");
+import path from "path";
 
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const __dirname = import.meta.dirname;
 
 const config = {
   entry: {
@@ -67,4 +69,4 @@ const config = {
   mode: "development",
 };
 
-module.exports = config;
+export default config;

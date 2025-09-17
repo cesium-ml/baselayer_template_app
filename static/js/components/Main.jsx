@@ -3,27 +3,21 @@ import PropTypes from "prop-types";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 
-import messageHandler from "baselayer/MessageHandler";
 import WebSocket from "baselayer/components/WebSocket";
 import { Notifications } from "baselayer/components/Notifications";
 
 import { store } from "../store";
-import "../customMessageHandler";
+import { setupMessageHandlers } from "../customMessageHandler";
 
 // Components and containers
 
+import * as Action from "../actions";
 import Profile from "./Profile";
 import Examples from "./Examples";
 
-// Actions
+const messageHandler = setupMessageHandlers(store);
 
-import * as Action from "../actions";
-
-// Set up store and message handling
-
-messageHandler.init(store.dispatch, store.getState);
-
-const MainContent = ({ root }) => {
+function MainContent({ root }) {
   useEffect(() => {
     store.dispatch(Action.hydrate());
   }, []);
@@ -33,12 +27,12 @@ const MainContent = ({ root }) => {
       <div style={{ float: "right" }}>
         <b>WebSocket connection: </b>
         <WebSocket
+          auth_url={`${window.location.protocol}//${root}baselayer/socket_auth_token`}
+          dispatch={store.dispatch}
+          messageHandler={messageHandler}
           url={`${
             window.location.protocol === "https:" ? "wss" : "ws"
           }://${root}websocket`}
-          auth_url={`${window.location.protocol}//${root}baselayer/socket_auth_token`}
-          messageHandler={messageHandler}
-          dispatch={store.dispatch}
         />
         <Profile />
       </div>
@@ -51,7 +45,7 @@ const MainContent = ({ root }) => {
       <Examples />
     </>
   );
-};
+}
 MainContent.propTypes = {
   root: PropTypes.string.isRequired,
 };
