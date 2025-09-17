@@ -27,4 +27,5 @@ repos:
         entry: npx eslint -c eslint.config.js static/js --fix
         language: system
         files: \.[j]sx?$
+        exclude: 'eslint.config.js|rspack.config.js'
         types: [file]
