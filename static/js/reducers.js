@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-import { reducer as notificationsReducer } from "baselayer/components/Notifications";
+import { reducer as notificationsReducer } from "baselayer/components/Notifications.jsx";
 
-import * as Action from "./actions";
+import * as Action from "./actions.js";
 
 export function profileReducer(state = { username: "" }, action) {
   switch (action.type) {
