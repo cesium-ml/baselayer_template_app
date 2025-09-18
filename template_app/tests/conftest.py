@@ -13,4 +13,4 @@ from baselayer.app.test_util import set_server_url as _set_server_url
 print("Loading test configuration from test_config.yaml")
 basedir = pathlib.Path(os.path.dirname(__file__)) / "../.."
 cfg = _load_config([basedir / "test_config.yaml"])
-_set_server_url(f'http://localhost:{cfg["ports.app"]}')
+_set_server_url(f"http://localhost:{cfg['ports.app']}")

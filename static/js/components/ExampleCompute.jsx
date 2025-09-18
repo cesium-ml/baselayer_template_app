@@ -13,7 +13,7 @@ function ExampleCompute() {
     event.preventDefault();
 
     dispatch(
-      API.POST("/example_compute", "template_app/SEND_COMPUTE", { n: number })
+      API.POST("/example_compute", "template_app/SEND_COMPUTE", { n: number }),
     );
   };
 

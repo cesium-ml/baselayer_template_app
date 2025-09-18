@@ -54,5 +54,5 @@ const content = ReactDOM.createRoot(document.getElementById("content"));
 content.render(
   <Provider store={store}>
     <MainContent root={window.location.host + window.location.pathname} />
-  </Provider>
+  </Provider>,
 );
