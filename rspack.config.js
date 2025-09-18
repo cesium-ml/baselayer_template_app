@@ -6,10 +6,7 @@ const __dirname = import.meta.dirname;
 
 const config = {
   entry: {
-    main: [
-      "@babel/polyfill",
-      path.resolve(__dirname, "static/js/components/Main.jsx"),
-    ],
+    main: [path.resolve(__dirname, "static/js/components/Main.jsx")],
   },
   output: {
     path: path.resolve(__dirname, "static/build"),
@@ -28,8 +25,8 @@ const config = {
           plugins: [
             "@babel/plugin-transform-async-to-generator",
             "@babel/plugin-transform-arrow-functions",
-            "@babel/plugin-proposal-class-properties",
-            "@babel/plugin-proposal-object-rest-spread",
+            "@babel/plugin-transform-class-properties",
+            "@babel/plugin-transform-object-rest-spread",
           ],
           compact: false,
         },
