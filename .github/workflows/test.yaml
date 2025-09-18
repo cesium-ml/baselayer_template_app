@@ -67,9 +67,9 @@ jobs:
           nginx -v
           firefox --version
 
-      - name: Install Selenium
+      - name: Install test dependencies
         run: |
-          pip install --upgrade selenium
+          pip install -r baselayer/requirements.test.txt
           python -c "import selenium; print(f'Selenium {selenium.__version__}')"
 
       - name: Write configuration & build DB
