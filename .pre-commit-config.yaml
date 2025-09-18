@@ -17,7 +17,6 @@ repos:
       # Detect mistakes
       - id: debug-statements
       - id: detect-private-key
-      - id: forbid-submodules
       # Automatic fixes
       - id: mixed-line-ending
         args: [--fix=lf]

@@ -1,12 +1,11 @@
 line-length = 88
 target-version = "py310"
-
-[lint]
-select = ["F", "E", "W", "UP", "I"]
-
 exclude = [
   ".git",
   "node_modules",
   "baselayer",
   ".ruff_cache",
 ]
+
+[lint]
+select = ["F", "E", "W", "UP", "I"]
