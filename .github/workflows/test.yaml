@@ -106,14 +106,7 @@ jobs:
         run: |
           make test_headless
 
-      - name: Lint PR
-        if: ${{ github.ref != 'refs/heads/main' }}
-        run: |
-          pip install pre-commit
-          pre-commit run --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
-
       - name: Lint all
-        if: ${{ github.ref == 'refs/heads/main' }}
         run: |
           pip install pre-commit
           pre-commit run -a
