@@ -75,6 +75,7 @@ jobs:
       - name: Install test dependencies
         run: |
           pip install -r baselayer/requirements.test.txt
+          playwright install firefox
 
       - name: Write configuration & build DB
         run: |
