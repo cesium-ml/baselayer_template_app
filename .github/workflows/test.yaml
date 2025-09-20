@@ -108,6 +108,7 @@ jobs:
 
       - name: Lint all
         run: |
+          git clean -xdf
           pip install pre-commit
           pre-commit run -a
 
