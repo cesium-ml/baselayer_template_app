@@ -58,7 +58,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v5
         with:
-          node-version: "latest"
+          node-version: "22.x"
 
       - name: Install system dependencies
         run: |
