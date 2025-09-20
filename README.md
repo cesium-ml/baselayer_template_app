@@ -17,6 +17,10 @@ Clone this repository:
 
 `git clone --recursive git://github.com/cesium-ml/baselayer_template_app`
 
+Initialize the postgres database:
+
+`make db_init`
+
 Start the application with:
 
 `make run`

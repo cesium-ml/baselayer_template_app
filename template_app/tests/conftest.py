@@ -3,14 +3,54 @@
 import os
 import pathlib
 
-from baselayer.app.config import load_config as _load_config
+import pytest
+from playwright.sync_api import BrowserContext, Page, expect
 
-# Fixtures for other tests
-from baselayer.app.test_util import MyCustomWebDriver, driver, reset_state  # noqa: F401
-from baselayer.app.test_util import set_server_url as _set_server_url
+from baselayer.app.config import load_config
 
-# Server connection configuration
 print("Loading test configuration from test_config.yaml")
 basedir = pathlib.Path(os.path.dirname(__file__)) / "../.."
-cfg = _load_config([basedir / "test_config.yaml"])
-_set_server_url(f"http://localhost:{cfg['ports.app']}")
+cfg = load_config([basedir / "test_config.yaml"])
+base_url = f"http://localhost:{cfg['ports.app']}"
+
+
+# Shared across tests in one module/file
+# This is so that we keep login across tests in a single file
+@pytest.fixture(scope="module")
+def shared_context(browser):
+    context = browser.new_context()
+
+    page = context.new_page()
+    page.goto(base_url)
+    login_link = page.locator("a[href='/login/google-oauth2']")
+    login_link.click()
+
+    yield context
+
+    context.close()
+
+
+@pytest.fixture
+def page(shared_context: BrowserContext) -> Page:
+    """Customized playwright page fixture with shorter timeout and
+    goto relative to server root.
+    """
+    page = shared_context.new_page()
+    page.set_default_timeout(5000)
+
+    page.old_goto = page.goto
+
+    def goto(relative_url, **kwargs):
+        page.old_goto(base_url + relative_url, **kwargs)
+
+        websocket_status = page.locator("#websocketStatus")
+        expect(websocket_status).to_have_attribute(
+            "title", "WebSocket is connected & authenticated."
+        )
+
+    page.goto = goto
+
+    return page
+
+
+del load_config

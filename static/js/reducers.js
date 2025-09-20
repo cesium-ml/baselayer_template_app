@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { reducer as notificationsReducer } from "baselayer/components/Notifications.jsx";
+import { reducer as notificationsReducer } from "baselayer/components/Notifications";
 
 import * as Action from "./actions.js";
 
