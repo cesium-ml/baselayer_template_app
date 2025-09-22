@@ -1,6 +1,6 @@
 import path from "path";
 
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 const __dirname = import.meta.dirname;
 
@@ -50,7 +50,7 @@ const config = {
   },
   plugins: [
     // Uncomment the following line to enable bundle size analysis
-    //    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ],
   resolve: {
     alias: {

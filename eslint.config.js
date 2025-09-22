@@ -67,7 +67,7 @@ export default defineConfig([
     settings: {
       "import/resolver": {
         webpack: {
-          config: "rspack.config.js",
+          config: "resolve.eslint.cjs",
         },
       },
       react: {

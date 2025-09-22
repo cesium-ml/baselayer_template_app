@@ -1,4 +1,4 @@
-import messageHandler from "baselayer/MessageHandler.js";
+import messageHandler from "baselayer/MessageHandler";
 import * as Action from "./actions.js";
 
 export const setupMessageHandlers = (store) => {
