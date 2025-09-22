@@ -28,6 +28,8 @@ jobs:
           --health-retries 5
 
     steps:
+      # NOTE: Keep this action in sync with baselayer
+
       - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
@@ -37,46 +39,59 @@ jobs:
         with:
           submodules: true
 
-      - uses: actions/cache@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          path: |
-            ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('package.json') }}
+          version: "latest"
 
-      - uses: actions/cache@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22.x"
+
+      - name: Set up pip cache
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cache/pip
-          key: ${{ runner.os }}-${{ hashFiles('**/requirements*.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
 
-      - uses: actions/cache@v4
+      - name: Set up pnpm cache
+        uses: actions/cache@v4
         with:
           path: |
-            ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+            ~/.npm-packages
+          # Hash is not currently correctly calculated; why not?
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/package.json') }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v5
-        with:
-          node-version: "22.x"
+      - name: Install test dependencies
+        run: |
+          pip install -r baselayer/requirements.test.txt
+
+      - name: Export Playwright version
+        run: |
+          PV=$(playwright --version | awk '{print $2}')
+          echo "PLAYWRIGHT_VERSION=$PV" >> "$GITHUB_ENV"
+
+      - name: Install Playwright Firefox
+        run: |
+          playwright install firefox
 
       - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y wget nodejs unzip nginx
 
-          pip install wheel
+          # if nginx is already installed, remove it
+          sudo apt-get remove -y nginx nginx-common nginx-core nginx-full
+          sudo apt-get purge -y nginx nginx-common nginx-core nginx-full
+
+          # add the PPA repository with brotli support for nginx
+          sudo add-apt-repository ppa:ondrej/nginx -y
+          sudo apt-get update -y
+          sudo apt-get install nginx libnginx-mod-http-brotli-static libnginx-mod-http-brotli-filter -y
 
           export NPM_PACKAGES="${HOME}/.npm-packages"
           export PATH=${NPM_PACKAGES}/bin:$PATH
-          export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-
-          sudo npm -g install npm@latest
-
-      - name: Install test dependencies
-        run: |
-          pip install -r baselayer/requirements.test.txt
-          playwright install firefox
 
       - name: Write configuration & build DB
         run: |
@@ -111,7 +126,7 @@ jobs:
 
       - name: Test template app
         run: |
-          make test_headless
+          make test
 
       - name: Lint all
         run: |
