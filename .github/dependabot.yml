@@ -3,10 +3,11 @@ updates:
   - package-ecosystem: npm
     directory: "/"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: "cron"
+      cronjob: "0 1 15 * *" # 1am on 15th of each month
     cooldown:
-      default-days: 7
+      default-days: 14
+    open-pull-requests-limit: 10
     ignore:
       - dependency-name: css-loader
         versions:
