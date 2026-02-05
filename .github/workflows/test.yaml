@@ -138,6 +138,8 @@ jobs:
       - name: Test template app
         run: |
           cd baselayer_template_app
+          pwd
+          ls -1
           make test
 
       - name: Lint all
