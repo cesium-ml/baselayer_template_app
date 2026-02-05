@@ -3,9 +3,7 @@ name = 'baselayer_template_app'
 version = "0.0.0"
 requires-python = "==3.14.*"
 dependencies = [
-  "baselayer",
-  "packaging",
-  "pyyaml"
+  "baselayer"
 ]
 
 [tool.uv]
