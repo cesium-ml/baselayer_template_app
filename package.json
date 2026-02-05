@@ -1,6 +1,7 @@
 {
   "name": "template_application",
   "license": "BSD-3-Clause",
+  "packageManager": "pnpm@10.19.0",
   "scripts": {
     "build": "make bundle",
     "test": "eslint -c eslint.config.js statis/js && make test"
@@ -32,7 +33,7 @@
     "@babel/plugin-transform-optional-chaining": "7.27.1",
     "@babel/preset-env": "7.28.3",
     "@babel/preset-react": "7.27.1",
-    "@dr.pogodin/eslint-configs": "0.0.12",
+    "@dr.pogodin/eslint-configs": "0.1.0",
     "@eslint/compat": "1.4.0",
     "@eslint/js": "9.35.0",
     "@rspack/cli": "1.5.7",
