@@ -3,7 +3,6 @@ import globals from "globals";
 import js from "@eslint/js";
 import { defineConfig, globalIgnores } from "eslint/config";
 
-import importPlugin from "eslint-plugin-import";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import eslintConfigs from "@dr.pogodin/eslint-configs";
 
@@ -38,7 +37,6 @@ export default defineConfig([
     },
   },
   js.configs.recommended,
-  importPlugin.flatConfigs.recommended,
   eslintConfigs.configs.javascript,
   eslintConfigs.configs.react,
   {
