@@ -67,12 +67,12 @@ jobs:
 
       - name: Install test dependencies
         run: |
-          cd baselayer_template_app
+          cd -P baselayer_template_app
           uv sync --all-packages --group test --inexact
 
       - name: Export Playwright version
         run: |
-          cd baselayer_template_app
+          cd -P baselayer_template_app
           PV=$(uv run playwright --version | awk '{print $2}')
           echo "PLAYWRIGHT_VERSION=$PV" >> "$GITHUB_ENV"
 
@@ -84,7 +84,7 @@ jobs:
 
       - name: Install Playwright Firefox
         run: |
-          cd baselayer_template_app
+          cd -P baselayer_template_app
           uv run playwright install firefox
 
       - name: Install system dependencies
@@ -104,7 +104,7 @@ jobs:
 
       - name: Write configuration & build DB
         run: |
-          cd baselayer_template_app
+          cd -P baselayer_template_app
 
           cat << EOF > config.yaml
             database:
@@ -137,14 +137,14 @@ jobs:
 
       - name: Test template app
         run: |
-          cd baselayer_template_app
+          cd -P baselayer_template_app
           pwd
           ls -1
           make test
 
       - name: Lint all
         run: |
-          cd baselayer_template_app
+          cd -P baselayer_template_app
 
           git reset --hard HEAD
           pip install pre-commit
