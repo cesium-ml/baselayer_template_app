@@ -22,7 +22,7 @@
     "whatwg-fetch": "3.6.20"
   },
   "devDependencies": {
-    "@babel/core": "7.28.4",
+    "@babel/core": "7.28.6",
     "@babel/eslint-parser": "7.28.4",
     "@babel/plugin-transform-arrow-functions": "7.27.1",
     "@babel/plugin-transform-async-to-generator": "7.27.1",
