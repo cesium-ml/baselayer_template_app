@@ -33,6 +33,12 @@ repos:
     rev: 787fb9f542b140ba0b2aced38e6a3e68021647a3 # v3.5.3
     hooks:
       - id: prettier
+        exclude: |
+          (?x)^(
+              uv.lock|
+              pnpm-lock.yaml
+          )$
+
         pass_filenames: true
 
   - repo: https://github.com/pre-commit/mirrors-eslint
