@@ -31,7 +31,7 @@
     "@babel/plugin-transform-nullish-coalescing-operator": "7.27.1",
     "@babel/plugin-transform-object-rest-spread": "7.28.4",
     "@babel/plugin-transform-optional-chaining": "7.27.1",
-    "@babel/preset-env": "7.28.3",
+    "@babel/preset-env": "7.28.6",
     "@babel/preset-react": "7.28.5",
     "@dr.pogodin/eslint-configs": "0.1.0",
     "@eslint/compat": "1.4.0",
