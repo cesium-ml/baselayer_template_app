@@ -35,7 +35,7 @@
     "@babel/preset-react": "7.28.5",
     "@dr.pogodin/eslint-configs": "0.1.0",
     "@eslint/compat": "1.4.0",
-    "@eslint/js": "9.35.0",
+    "@eslint/js": "9.39.2",
     "@rspack/cli": "1.5.7",
     "@rspack/core": "1.5.5",
     "@types/eslint": "9.6.1",
