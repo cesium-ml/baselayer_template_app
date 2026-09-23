@@ -28,9 +28,9 @@ function ExampleCompute() {
 
       <p>
         We delay the computation artificially (2s per operation) to demonstrate
-        long running computations. Since the computations happen in parallel,
-        the total delay is around 3 or 4 seconds for squaring 5 numbers. Feel
-        free to click the button a few times in succession!
+        long running computations. The operations run in parallel threads, so
+        squaring 5 numbers still takes about 2 seconds. Feel free to click the
+        button a few times in succession!
       </p>
 
       <form onSubmit={handleSubmit}>

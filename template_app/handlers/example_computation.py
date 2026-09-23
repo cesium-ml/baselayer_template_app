@@ -1,3 +1,4 @@
+import asyncio
 import time
 
 import tornado.ioloop
@@ -6,34 +7,28 @@ import tornado.web
 from baselayer.app.handlers import BaseHandler
 
 
-class ExampleComputationHandler(BaseHandler):
-    async def _await_calculation(self, squares):
-        try:
-            squares = await squares
-        except Exception as e:
-            return self.error("Error executing calculation: " + str(e))
+def slow_square(x):
+    time.sleep(2)
+    return x**2
 
-        self.push_notification(note="Calculation completed")
+
+class ExampleComputationHandler(BaseHandler):
+    async def _compute_squares(self, n):
+        try:
+            squares = await asyncio.gather(
+                *(asyncio.to_thread(slow_square, x) for x in range(n))
+            )
+        except Exception as e:
+            return self.push_notification(f"Error executing calculation: {e}", "error")
+
+        self.push_notification("Calculation completed")
         self.action("template_app/EXAMPLE_RESULT", payload={"squares": squares})
 
     @tornado.web.authenticated
     async def post(self):
-        data = self.get_json()
+        n = int(self.get_json()["n"])
 
-        n = data["n"]
-
-        # Get Dask client
-        client = await self._get_client()
-
-        def slow_square(x):
-            time.sleep(2)
-            return x**2
-
-        futures = client.map(slow_square, range(int(n)))
-        squares = client.gather(futures)
-
-        loop = tornado.ioloop.IOLoop.current()
-        loop.spawn_callback(self._await_calculation, squares)
+        tornado.ioloop.IOLoop.current().spawn_callback(self._compute_squares, n)
 
         self.push_notification(f"Computation n={n} submitted")
         return self.success()
