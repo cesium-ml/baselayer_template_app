@@ -9,7 +9,7 @@ get a batteries-included web application. It includes:
 - Process management via supervisord
 - Proxy configuration via nginx
 - Authentication (currently using Google) via Python Social Auth
-- Distributed task computation, via `dask` and `distributed`
+- Long-running computation off the request loop, with results pushed over WebSockets
 
 ## Customization guide
 
