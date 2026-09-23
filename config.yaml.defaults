@@ -28,7 +28,3 @@ server:
         debug_login: True
         google_oauth2_key:
         google_oauth2_secret:
-
-services:
-  # By default, dask is disabled; setting disabled list to empty allows it to start up
-  disabled:
