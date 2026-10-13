@@ -64,8 +64,8 @@ export default defineConfig([
   {
     settings: {
       "import/resolver": {
-        webpack: {
-          config: "resolve.eslint.cjs",
+        typescript: {
+          project: "jsconfig.json",
         },
       },
       react: {
