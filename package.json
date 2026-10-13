@@ -1,7 +1,7 @@
 {
   "name": "template_application",
   "license": "BSD-3-Clause",
-  "packageManager": "pnpm@10.19.0",
+  "packageManager": "pnpm@12.10.1",
   "scripts": {
     "build": "make bundle",
     "test": "eslint -c eslint.config.js statis/js && make test"
