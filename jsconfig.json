@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "baselayer/*": ["baselayer/static/js/*"]
+    }
+  },
+  "include": ["static/js"]
+}
