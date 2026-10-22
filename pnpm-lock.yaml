@@ -258,8 +258,8 @@ importers:
         specifier: 25.0.10
         version: 25.0.10
       babel-loader:
-        specifier: 10.0.0
-        version: 10.0.0(@babel/core@7.28.6)(webpack@5.101.3)
+        specifier: 10.1.1
+        version: 10.1.1(@babel/core@7.28.6)(@rspack/core@1.5.5)(webpack@5.101.3)
       eslint:
         specifier: 9.35.0
         version: 9.35.0
@@ -1614,12 +1614,18 @@ packages:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
     engines: {node: '>= 0.4'}
 
-  babel-loader@10.0.0:
-    resolution: {integrity: sha512-z8jt+EdS61AMw22nSfoNJAZ0vrtmhPRVi6ghL3rCeRZI8cdNYFiV5xeV3HbE7rlZZNmGH8BVccwWt8/ED0QOHA==}
+  babel-loader@10.1.1:
+    resolution: {integrity: sha512-JwKSzk2kjIe7mgPK+/lyZ2QAaJcpahNAdM+hgR2HI8D0OJVkdj8Rl6J3kaLYki9pwF7P2iWnD8qVv80Lq1ABtg==}
     engines: {node: ^18.20.0 || ^20.10.0 || >=22.0.0}
     peerDependencies:
-      '@babel/core': ^7.12.0
+      '@babel/core': ^7.12.0 || ^8.0.0-beta.1
+      '@rspack/core': ^1.0.0 || ^2.0.0-0
       webpack: '>=5.61.0'
+    peerDependenciesMeta:
+      '@rspack/core':
+        optional: true
+      webpack:
+        optional: true
 
   babel-plugin-polyfill-corejs2@0.4.14:
     resolution: {integrity: sha512-Co2Y9wX854ts6U8gAAPXfn0GmAyctHuK8n0Yhfjd6t30g7yvKjspvvOo9yG+z52PZRgFErt7Ka2pYnXCjLKEpg==}
@@ -5360,10 +5366,12 @@ snapshots:
 
   axobject-query@4.1.0: {}
 
-  babel-loader@10.0.0(@babel/core@7.28.6)(webpack@5.101.3):
+  babel-loader@10.1.1(@babel/core@7.28.6)(@rspack/core@1.5.5)(webpack@5.101.3):
     dependencies:
       '@babel/core': 7.28.6
       find-up: 5.0.0
+    optionalDependencies:
+      '@rspack/core': 1.5.5
       webpack: 5.101.3
 
   babel-plugin-polyfill-corejs2@0.4.14(@babel/core@7.28.6):
