@@ -63,11 +63,6 @@ export default defineConfig([
   },
   {
     settings: {
-      "import/resolver": {
-        typescript: {
-          project: "jsconfig.json",
-        },
-      },
       react: {
         version: "detect",
       },
