@@ -168,7 +168,7 @@ importers:
     dependencies:
       '@reduxjs/toolkit':
         specifier: 2.9.0
-        version: 2.9.0(react-redux@9.2.0(react@19.1.1)(redux@5.0.1))(react@19.1.1)
+        version: 2.9.0(react-redux@9.2.0(react@19.2.4)(redux@5.0.1))(react@19.2.4)
       check-dependencies:
         specifier: 2.0.0
         version: 2.0.0
@@ -185,14 +185,14 @@ importers:
         specifier: 15.8.1
         version: 15.8.1
       react:
-        specifier: 19.1.1
-        version: 19.1.1
+        specifier: 19.2.4
+        version: 19.2.4
       react-dom:
         specifier: 19.1.1
-        version: 19.1.1(react@19.1.1)
+        version: 19.1.1(react@19.2.4)
       react-redux:
         specifier: 9.2.0
-        version: 9.2.0(react@19.1.1)(redux@5.0.1)
+        version: 9.2.0(react@19.2.4)(redux@5.0.1)
       redux:
         specifier: 5.0.1
         version: 5.0.1
@@ -3023,8 +3023,8 @@ packages:
       redux:
         optional: true
 
-  react@19.1.1:
-    resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
+  react@19.2.4:
+    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@2.3.8:
@@ -4716,7 +4716,7 @@ snapshots:
 
   '@polka/url@1.0.0-next.29': {}
 
-  '@reduxjs/toolkit@2.9.0(react-redux@9.2.0(react@19.1.1)(redux@5.0.1))(react@19.1.1)':
+  '@reduxjs/toolkit@2.9.0(react-redux@9.2.0(react@19.2.4)(redux@5.0.1))(react@19.2.4)':
     dependencies:
       '@standard-schema/spec': 1.0.0
       '@standard-schema/utils': 0.3.0
@@ -4725,8 +4725,8 @@ snapshots:
       redux-thunk: 3.1.0(redux@5.0.1)
       reselect: 5.1.1
     optionalDependencies:
-      react: 19.1.1
-      react-redux: 9.2.0(react@19.1.1)(redux@5.0.1)
+      react: 19.2.4
+      react-redux: 9.2.0(react@19.2.4)(redux@5.0.1)
 
   '@rspack/binding-darwin-arm64@1.7.11':
     optional: true
@@ -6925,22 +6925,22 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-dom@19.1.1(react@19.1.1):
+  react-dom@19.1.1(react@19.2.4):
     dependencies:
-      react: 19.1.1
+      react: 19.2.4
       scheduler: 0.26.0
 
   react-is@16.13.1: {}
 
-  react-redux@9.2.0(react@19.1.1)(redux@5.0.1):
+  react-redux@9.2.0(react@19.2.4)(redux@5.0.1):
     dependencies:
       '@types/use-sync-external-store': 0.0.6
-      react: 19.1.1
-      use-sync-external-store: 1.5.0(react@19.1.1)
+      react: 19.2.4
+      use-sync-external-store: 1.5.0(react@19.2.4)
     optionalDependencies:
       redux: 5.0.1
 
-  react@19.1.1: {}
+  react@19.2.4: {}
 
   readable-stream@2.3.8:
     dependencies:
@@ -7513,9 +7513,9 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-sync-external-store@1.5.0(react@19.1.1):
+  use-sync-external-store@1.5.0(react@19.2.4):
     dependencies:
-      react: 19.1.1
+      react: 19.2.4
 
   util-deprecate@1.0.2: {}
 
