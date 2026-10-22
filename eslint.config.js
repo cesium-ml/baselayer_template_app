@@ -63,11 +63,6 @@ export default defineConfig([
   },
   {
     settings: {
-      "import/resolver": {
-        webpack: {
-          config: "resolve.eslint.cjs",
-        },
-      },
       react: {
         version: "detect",
       },
