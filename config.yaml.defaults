@@ -12,7 +12,7 @@ database:
     database: template_app
     host: localhost
     port: 5432
-    user: temnplate_app
+    user: template_app
     password:
 
 server:
