@@ -53,9 +53,8 @@ const config = {
     // new BundleAnalyzerPlugin()
   ],
   resolve: {
-    alias: {
-      baselayer: path.resolve(__dirname, "baselayer/static/js"),
-    },
+    // Import aliases are defined in jsconfig.json
+    tsConfig: path.resolve(__dirname, "jsconfig.json"),
     extensions: [".js", ".jsx"],
   },
   watchOptions: {

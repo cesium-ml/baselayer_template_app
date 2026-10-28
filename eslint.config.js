@@ -63,10 +63,9 @@ export default defineConfig([
   },
   {
     settings: {
+      // Reads import aliases from jsconfig.json
       "import/resolver": {
-        webpack: {
-          config: "resolve.eslint.cjs",
-        },
+        typescript: true,
       },
       react: {
         version: "detect",
