@@ -63,6 +63,10 @@ export default defineConfig([
   },
   {
     settings: {
+      // Reads import aliases from jsconfig.json
+      "import/resolver": {
+        typescript: true,
+      },
       react: {
         version: "detect",
       },
