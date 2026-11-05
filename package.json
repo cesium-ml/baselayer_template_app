@@ -4,7 +4,7 @@
   "packageManager": "pnpm@12.10.1",
   "scripts": {
     "build": "make bundle",
-    "test": "eslint -c eslint.config.js statis/js && make test"
+    "test": "eslint -c eslint.config.js static/js && make test"
   },
   "type": "module",
   "dependencies": {
