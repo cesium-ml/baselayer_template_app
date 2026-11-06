@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { type SubmitEvent, useState } from "react";
 
 import * as API from "baselayer/API";
 
+import { useAppDispatch, useAppSelector } from "../store";
+
 function ExampleCompute() {
   const [number, setNumber] = useState("5");
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const { results } = useSelector((state) => state.examples);
+  const { results } = useAppSelector((state) => state.examples);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    dispatch(
+    void dispatch(
       API.POST("/example_compute", "template_app/SEND_COMPUTE", { n: number }),
     );
   };
@@ -36,8 +37,10 @@ function ExampleCompute() {
       <form onSubmit={handleSubmit}>
         Calculate squares of first &nbsp;
         <input
-          onChange={(e) => setNumber(e.target.value)}
-          size="2"
+          onChange={(e) => {
+            setNumber(e.target.value);
+          }}
+          size={2}
           type="text"
           value={number}
         />
