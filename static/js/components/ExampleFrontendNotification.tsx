@@ -6,8 +6,9 @@ function ExampleFrontendNotification() {
   const dispatch = useAppDispatch();
 
   return (
-    <>
-      <h3>Example of a frontend-generated notification</h3>
+    <section className="card">
+      <h2>Frontend notification</h2>
+      <p>The browser shows a notification without asking the server.</p>
 
       <button
         onClick={() => {
@@ -17,7 +18,7 @@ function ExampleFrontendNotification() {
       >
         Frontend-generated notification
       </button>
-    </>
+    </section>
   );
 }
 

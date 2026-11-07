@@ -24,18 +24,17 @@ function ExampleCompute() {
   ));
 
   return (
-    <div>
-      <h3>Example of a long running computation.</h3>
+    <section className="card">
+      <h2>Long-running computation</h2>
 
       <p>
-        We delay the computation artificially (2s per operation) to demonstrate
-        long running computations. The operations run in parallel threads, so
-        squaring 5 numbers still takes about 2 seconds. Feel free to click the
-        button a few times in succession!
+        Each square takes 2 seconds. The squares are calculated in parallel
+        threads, so 5 squares also take about 2 seconds. The result comes back
+        over the WebSocket. You can submit more than one computation at a time.
       </p>
 
       <form onSubmit={handleSubmit}>
-        Calculate squares of first &nbsp;
+        Calculate the squares of the first
         <input
           onChange={(e) => {
             setNumber(e.target.value);
@@ -44,13 +43,12 @@ function ExampleCompute() {
           type="text"
           value={number}
         />
-        &nbsp;numbers. &nbsp;
+        numbers
         <input type="submit" value="Go!" />
       </form>
 
-      <h4>Results</h4>
-      <ul>{resultItems}</ul>
-    </div>
+      {resultItems.length > 0 && <ul>{resultItems}</ul>}
+    </section>
   );
 }
 

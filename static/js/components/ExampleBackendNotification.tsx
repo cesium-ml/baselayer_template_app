@@ -6,8 +6,9 @@ function ExampleBackendNotification() {
   const dispatch = useAppDispatch();
 
   return (
-    <>
-      <h3>Example of a backend-generated notification</h3>
+    <section className="card">
+      <h2>Backend notification</h2>
+      <p>The server sends a notification over the WebSocket.</p>
 
       <button
         onClick={() => {
@@ -17,7 +18,7 @@ function ExampleBackendNotification() {
       >
         Backend-generated notification
       </button>
-    </>
+    </section>
   );
 }
 

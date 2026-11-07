@@ -37,21 +37,32 @@ function BaselayerLogo({
 
 function PoweredByBaselayer({ monochrome = false }: { monochrome?: boolean }) {
   return (
-    <a
-      href="https://github.com/cesium-ml/baselayer"
-      style={{ color: "inherit", textDecoration: "none" }}
+    <footer
+      style={{
+        borderTop:
+          "1px solid color-mix(in srgb, currentColor 15%, transparent)",
+        opacity: 0.7,
+        fontSize: "0.85em",
+        marginTop: "3em",
+        paddingTop: "0.75em",
+      }}
     >
-      Powered by <BaselayerLogo monochrome={monochrome} size="1.5em" />{" "}
-      {/* A named font first keeps the size; plain "monospace" renders smaller */}
-      <span
-        style={{
-          fontFamily:
-            "ui-monospace, Menlo, Consolas, 'DejaVu Sans Mono', monospace",
-        }}
+      <a
+        href="https://github.com/cesium-ml/baselayer"
+        style={{ color: "inherit", textDecoration: "none" }}
       >
-        baselayer
-      </span>
-    </a>
+        Powered by <BaselayerLogo monochrome={monochrome} size="1.5em" />{" "}
+        {/* A named font first keeps the size; plain "monospace" renders smaller */}
+        <span
+          style={{
+            fontFamily:
+              "ui-monospace, Menlo, Consolas, 'DejaVu Sans Mono', monospace",
+          }}
+        >
+          baselayer
+        </span>
+      </a>
+    </footer>
   );
 }
 
