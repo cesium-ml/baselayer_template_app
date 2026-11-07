@@ -1,8 +1,14 @@
-// Monochrome version of baselayer/static/img/logo.svg; it takes the text color
+// Drawn from baselayer/static/img/logo.svg; the monochrome logo takes the text color
 const LOGO_LAYER =
   "M 77.863,51.126 94.872,57.552 90.336,80.420 58.964,66.624 Z";
 
-function BaselayerLogo({ size }: { size: string }) {
+function BaselayerLogo({
+  monochrome,
+  size,
+}: {
+  monochrome: boolean;
+  size: string;
+}) {
   return (
     <svg
       aria-hidden="true"
@@ -13,20 +19,23 @@ function BaselayerLogo({ size }: { size: string }) {
     >
       <path
         d={LOGO_LAYER}
-        fill="currentColor"
-        opacity={0.4}
+        fill={monochrome ? "currentColor" : "#999999"}
+        opacity={monochrome ? 0.4 : 1}
         transform="translate(-55.137,-41.362)"
       />
       <path
         d={LOGO_LAYER}
-        fill="currentColor"
+        fill={monochrome ? "currentColor" : "#aa008a"}
+        fillOpacity={monochrome ? 1 : 0.54}
+        stroke={monochrome ? "none" : "#ffffff"}
+        strokeWidth={0.5}
         transform="translate(-58.161,-46.654)"
       />
     </svg>
   );
 }
 
-function PoweredByBaselayer() {
+function PoweredByBaselayer({ monochrome = false }: { monochrome?: boolean }) {
   return (
     <footer
       style={{
@@ -41,7 +50,16 @@ function PoweredByBaselayer() {
         href="https://github.com/cesium-ml/baselayer"
         style={{ color: "inherit", textDecoration: "none" }}
       >
-        <BaselayerLogo size="1.5em" /> Powered by baselayer
+        Powered by <BaselayerLogo monochrome={monochrome} size="1.5em" />{" "}
+        {/* A named font first keeps the size; plain "monospace" renders smaller */}
+        <span
+          style={{
+            fontFamily:
+              "ui-monospace, Menlo, Consolas, 'DejaVu Sans Mono', monospace",
+          }}
+        >
+          baselayer
+        </span>
       </a>
     </footer>
   );
