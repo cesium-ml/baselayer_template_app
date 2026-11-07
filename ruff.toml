@@ -1,5 +1,5 @@
 line-length = 88
-target-version = "py310"
+target-version = "py314"
 exclude = [
   ".git",
   "node_modules",

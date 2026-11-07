@@ -1,8 +1,6 @@
-import React from "react";
-
-import ExampleFrontendNotification from "./ExampleFrontendNotification";
 import ExampleBackendNotification from "./ExampleBackendNotification";
 import ExampleCompute from "./ExampleCompute";
+import ExampleFrontendNotification from "./ExampleFrontendNotification";
 
 function Examples() {
   return (
