@@ -192,9 +192,6 @@ importers:
       '@dr.pogodin/eslint-configs':
         specifier: 0.1.4
         version: 0.1.4(@babel/core@7.28.6(supports-color@7.2.0))(@typescript-eslint/eslint-plugin@8.72.1(@typescript-eslint/parser@8.72.1(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(@typescript-eslint/parser@8.72.1(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(eslint-import-resolver-typescript@4.4.5)(supports-color@7.2.0)
-      '@eslint/js':
-        specifier: 9.39.5
-        version: 9.39.5
       '@rspack/cli':
         specifier: 2.3.0
         version: 2.3.0(@rspack/core@2.3.0)
@@ -225,9 +222,6 @@ importers:
       typescript:
         specifier: 6.0.3
         version: 6.0.3
-      typescript-eslint:
-        specifier: 8.72.1
-        version: 8.72.1(eslint@9.39.5(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)
 
 packages:
 
