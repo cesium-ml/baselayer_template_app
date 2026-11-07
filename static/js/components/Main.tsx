@@ -45,8 +45,11 @@ function MainContent({ root }: { root: string }) {
 
       <main>
         <Examples />
-        <PoweredByBaselayer />
       </main>
+
+      <footer className="app-footer">
+        <PoweredByBaselayer />
+      </footer>
     </>
   );
 }
