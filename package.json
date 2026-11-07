@@ -1,54 +1,39 @@
 {
   "name": "template_application",
   "license": "BSD-3-Clause",
-  "packageManager": "pnpm@12.10.1",
+  "packageManager": "pnpm@12.17.0",
   "scripts": {
     "build": "make bundle",
-    "test": "eslint -c eslint.config.js static/js && make test"
+    "lint": "eslint static/js && tsc",
+    "test": "make test"
   },
   "type": "module",
   "dependencies": {
-    "@reduxjs/toolkit": "2.9.0",
+    "@reduxjs/toolkit": "2.13.0",
     "check-dependencies": "2.0.0",
-    "css-loader": "7.1.2",
-    "exports-loader": "5.0.0",
-    "imports-loader": "5.0.0",
     "prop-types": "15.8.1",
-    "react": "19.1.1",
-    "react-dom": "19.1.1",
-    "react-redux": "9.2.0",
-    "redux": "5.0.1",
-    "style-loader": "4.0.0",
-    "whatwg-fetch": "3.6.20"
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-redux": "9.3.1"
   },
   "devDependencies": {
-    "@babel/core": "7.28.6",
-    "@babel/eslint-parser": "7.28.4",
-    "@babel/plugin-transform-arrow-functions": "7.27.1",
-    "@babel/plugin-transform-async-to-generator": "7.27.1",
-    "@babel/plugin-transform-class-properties": "7.27.1",
-    "@babel/plugin-transform-export-namespace-from": "7.27.1",
-    "@babel/plugin-transform-nullish-coalescing-operator": "7.27.1",
-    "@babel/plugin-transform-object-rest-spread": "7.28.4",
-    "@babel/plugin-transform-optional-chaining": "7.27.1",
-    "@babel/preset-env": "7.28.3",
-    "@babel/preset-react": "7.28.5",
-    "@dr.pogodin/eslint-configs": "0.1.0",
-    "@eslint/compat": "2.0.3",
-    "@eslint/js": "9.39.2",
-    "@rspack/cli": "1.5.7",
-    "@rspack/core": "1.7.11",
-    "@types/eslint": "9.6.1",
-    "@types/node": "25.0.10",
-    "babel-loader": "10.1.1",
-    "eslint": "9.35.0",
+    "@dr.pogodin/eslint-configs": "0.1.4",
+    "@rspack/cli": "2.3.0",
+    "@rspack/core": "2.3.0",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
     "eslint-config-prettier": "10.1.8",
-    "eslint-import-resolver-typescript": "4.4.4",
-    "eslint-plugin-import": "2.32.0",
-    "globals": "17.4.0"
+    "eslint-import-resolver-typescript": "4.4.5",
+    "globals": "17.13.0",
+    "typescript": "6.0.3"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/cesium-ml/baselayer_template_app.git"
+  },
+  "engines": {
+    "node": ">=22.18"
   }
 }

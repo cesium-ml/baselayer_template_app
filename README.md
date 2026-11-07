@@ -5,7 +5,7 @@ get a batteries-included web application. It includes:
 
 - A Tornado-based Python web application that can be customized to your liking
 - WebSockets
-- JavaScript 6 compilation via Babel, with a Redux & React frontend
+- A TypeScript, Redux & React frontend, bundled with rspack
 - Process management via supervisord
 - Proxy configuration via nginx
 - Authentication (currently using Google) via Python Social Auth
@@ -15,7 +15,7 @@ get a batteries-included web application. It includes:
 
 Clone this repository:
 
-`git clone --recursive git://github.com/cesium-ml/baselayer_template_app`
+`git clone --recursive https://github.com/cesium-ml/baselayer_template_app`
 
 Initialize the postgres database:
 

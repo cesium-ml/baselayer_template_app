@@ -24,14 +24,14 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: f0fe93c067104b76ffb58852abe79673a8429bd1 # frozen: v0.11.8
+    rev: c0f278f1254ccc8fb09676bcdb8d847e7db493e5 # frozen: v0.17.4
     hooks:
       - id: ruff
         args: ["--fix", "--show-fixes", "--exit-non-zero-on-fix"]
       - id: ruff-format
 
   - repo: https://github.com/rbubley/mirrors-prettier
-    rev: 787fb9f542b140ba0b2aced38e6a3e68021647a3 # v3.5.3
+    rev: 331f33fa4dfbcbca7c3da3620c137fde0faab273 # frozen: v3.9.10
     hooks:
       - id: prettier
         exclude: |
@@ -42,9 +42,22 @@ repos:
 
         pass_filenames: true
 
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: a60120d4f10a6367afaec0723c5bd6024a749d0e # v9.35.0
+  - repo: local
     hooks:
       - id: eslint
-        files: \.[j]sx?$
+        name: eslint
+        entry: >-
+          sh -c '[ -x node_modules/.bin/eslint ] || { echo "ESLint not found: run pnpm install"; exit 1; };
+          exec node_modules/.bin/eslint "$@"' eslint
+        language: system
+        files: \.[jt]sx?$
         types: [file]
+        require_serial: true
+      - id: tsc
+        name: tsc
+        entry: >-
+          sh -c '[ -x node_modules/.bin/tsc ] || { echo "TypeScript not found: run pnpm install"; exit 1; };
+          exec node_modules/.bin/tsc'
+        language: system
+        files: \.[jt]sx?$
+        pass_filenames: false
