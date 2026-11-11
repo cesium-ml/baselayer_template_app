@@ -9,6 +9,7 @@ import * as Action from "../actions";
 import { setupMessageHandlers } from "../customMessageHandler";
 import { store } from "../store";
 import Examples from "./Examples";
+import PoweredByBaselayer from "./PoweredByBaselayer";
 import Profile from "./Profile";
 
 const messageHandler = setupMessageHandlers(store);
@@ -39,6 +40,10 @@ function MainContent({ root }: { root: string }) {
       <p>Hi, and welcome to Baselayer!</p>
 
       <Examples />
+
+      <footer>
+        <PoweredByBaselayer />
+      </footer>
     </>
   );
 }
