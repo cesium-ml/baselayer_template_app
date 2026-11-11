@@ -24,7 +24,7 @@
     "@types/react-dom": "19.3.0",
     "oxlint": "1.90.0",
     "oxlint-tsgolint": "7.0.2005",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   },
   "repository": {
     "type": "git",
