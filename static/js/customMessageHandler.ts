@@ -16,7 +16,7 @@ export const setupMessageHandlers = (store: AppStore) => {
       // For this example app, we simply take incoming websocket messages
       // and turn them into actions on the frontend.
       if (actionType === Action.EXAMPLE_RESULT) {
-        dispatch({ type: actionType, data: payload });
+        dispatch({ data: payload, type: actionType });
       }
     },
   );

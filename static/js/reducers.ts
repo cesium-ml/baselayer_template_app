@@ -1,4 +1,4 @@
-import { combineReducers, type UnknownAction } from "@reduxjs/toolkit";
+import { type UnknownAction, combineReducers } from "@reduxjs/toolkit";
 
 import { reducer as notificationsReducer } from "baselayer/components/Notifications";
 
@@ -43,9 +43,9 @@ export function exampleReducer(
 }
 
 const root = combineReducers({
-  profile: profileReducer,
-  notifications: notificationsReducer,
   examples: exampleReducer,
+  notifications: notificationsReducer,
+  profile: profileReducer,
   // add your own reducers here
 });
 

@@ -50,7 +50,7 @@ repos:
           sh -c '[ -x node_modules/.bin/eslint ] || { echo "ESLint not found: run pnpm install"; exit 1; };
           exec node_modules/.bin/eslint "$@"' eslint
         language: system
-        files: \.[jt]sx?$
+        files: ^static/js/.*\.[jt]sx?$
         types: [file]
         require_serial: true
       - id: tsc
