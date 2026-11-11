@@ -164,7 +164,6 @@ settings:
 
 overrides:
   typescript: 6.0.3
-  ts-api-utils: 2.5.0
 
 importers:
 
