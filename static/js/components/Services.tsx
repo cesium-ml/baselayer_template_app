@@ -68,10 +68,19 @@ function Services() {
   const { services } = useAppSelector((state) => state.services);
 
   useEffect(() => {
-    void dispatch(Action.fetchServices());
+    const refresh = async () => {
+      if (document.hidden) {
+        return;
+      }
+      const data: unknown = await dispatch(Action.fetchServices());
+      if (!(data instanceof Object && "services" in data)) {
+        clearInterval(timer);
+      }
+    };
     const timer = setInterval(() => {
-      void dispatch(Action.fetchServices());
+      void refresh();
     }, REFRESH_MS);
+    void refresh();
     return () => {
       clearInterval(timer);
     };
