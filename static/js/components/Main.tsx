@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import { Notifications } from "baselayer/components/Notifications";
 import WebSocket from "baselayer/components/WebSocket";
 
+import "../../css/main.css";
+
 import * as Action from "../actions";
 import { setupMessageHandlers } from "../customMessageHandler";
 import { store } from "../store";
@@ -21,27 +23,31 @@ function MainContent({ root }: { root: string }) {
 
   return (
     <>
-      <div style={{ float: "right" }}>
-        <b>WebSocket connection: </b>
-        <WebSocket
-          auth_url={`${window.location.protocol}//${root}baselayer/socket_auth_token`}
-          dispatch={store.dispatch}
-          messageHandler={messageHandler}
-          url={`${
-            window.location.protocol === "https:" ? "wss" : "ws"
-          }://${root}websocket`}
-        />
-        <Profile />
-      </div>
+      <header className="app-header">
+        <h1>Baselayer Template Application</h1>
+        <div className="app-status">
+          <div>
+            WebSocket
+            <WebSocket
+              auth_url={`${window.location.protocol}//${root}baselayer/socket_auth_token`}
+              dispatch={store.dispatch}
+              messageHandler={messageHandler}
+              url={`${
+                window.location.protocol === "https:" ? "wss" : "ws"
+              }://${root}websocket`}
+            />
+          </div>
+          <Profile />
+        </div>
+      </header>
 
       <Notifications />
 
-      <h1>Baselayer Template Application</h1>
-      <p>Hi, and welcome to Baselayer!</p>
+      <main>
+        <Examples />
+      </main>
 
-      <Examples />
-
-      <footer>
+      <footer className="app-footer">
         <PoweredByBaselayer />
       </footer>
     </>
