@@ -8,6 +8,14 @@ type DataAction<T> = UnknownAction & {
   data: T;
 };
 
+// The type of `data` is not checked: it comes from the server or the WebSocket
+function isDataAction<T>(
+  action: UnknownAction,
+  type: string,
+): action is DataAction<T> {
+  return action.type === type && "data" in action;
+}
+
 export type Profile = {
   username: string;
 };
@@ -16,12 +24,10 @@ export function profileReducer(
   state: Profile = { username: "" },
   action: UnknownAction,
 ): Profile {
-  switch (action.type) {
-    case Action.FETCH_USER_PROFILE_OK:
-      return (action as DataAction<Profile>).data;
-    default:
-      return state;
+  if (isDataAction<Profile>(action, Action.FETCH_USER_PROFILE_OK)) {
+    return action.data;
   }
+  return state;
 }
 
 export type ExampleState = {
@@ -32,14 +38,10 @@ export function exampleReducer(
   state: ExampleState = { results: [] },
   action: UnknownAction,
 ): ExampleState {
-  switch (action.type) {
-    case Action.EXAMPLE_RESULT: {
-      const { squares } = (action as DataAction<{ squares: number[] }>).data;
-      return { ...state, results: [...state.results, squares] };
-    }
-    default:
-      return state;
+  if (isDataAction<{ squares: number[] }>(action, Action.EXAMPLE_RESULT)) {
+    return { ...state, results: [...state.results, action.data.squares] };
   }
+  return state;
 }
 
 const root = combineReducers({
