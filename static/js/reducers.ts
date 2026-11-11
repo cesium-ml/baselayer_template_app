@@ -54,12 +54,11 @@ export type Service = {
 };
 
 export type ServicesState = {
-  preload: string[];
   services: Service[];
 };
 
 export function servicesReducer(
-  state: ServicesState = { preload: [], services: [] },
+  state: ServicesState = { services: [] },
   action: UnknownAction,
 ): ServicesState {
   if (isDataAction<ServicesState>(action, Action.FETCH_SERVICES_OK)) {

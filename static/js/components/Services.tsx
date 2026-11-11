@@ -67,7 +67,7 @@ function ServiceRow({
 
 function Services() {
   const dispatch = useAppDispatch();
-  const { preload, services } = useAppSelector((state) => state.services);
+  const { services } = useAppSelector((state) => state.services);
 
   useEffect(() => {
     void dispatch(Action.fetchServices());
@@ -89,14 +89,6 @@ function Services() {
   return (
     <section className="card">
       <h2>Services</h2>
-      <p>
-        supervisord runs each service.{" "}
-        {hasZygote
-          ? `The zygote imports ${preload.join(", ")} once, then forks the
-          Python services from it. They share the zygote's memory, and each
-          service adds its own.`
-          : null}
-      </p>
 
       <div className="table-scroll">
         <table className="services">

@@ -7,7 +7,7 @@ from baselayer.app.handlers import BaseHandler
 from baselayer.tools.memory_usage import SUPERVISORD_CFG, forked_pid, service_memory
 
 
-def service_info(cfg):
+def service_info():
     """Return the state and memory use of each supervisor service."""
     options = ClientOptions()
     options.realize(["-c", SUPERVISORD_CFG])
@@ -33,12 +33,11 @@ def service_info(cfg):
 
     return {
         "services": sorted(services, key=lambda s: s["name"]),
-        "preload": cfg["zygote.preload"] or [cfg["app.factory"].rsplit(".", 1)[0]],
     }
 
 
 class ServicesHandler(BaseHandler):
     @tornado.web.authenticated
     async def get(self):
-        info = await asyncio.to_thread(service_info, self.cfg)
+        info = await asyncio.to_thread(service_info)
         return self.success(data=info)
