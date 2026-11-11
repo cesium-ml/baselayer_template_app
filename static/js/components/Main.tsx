@@ -41,7 +41,9 @@ function MainContent({ root }: { root: string }) {
 
       <Examples />
 
-      <PoweredByBaselayer />
+      <footer>
+        <PoweredByBaselayer />
+      </footer>
     </>
   );
 }
