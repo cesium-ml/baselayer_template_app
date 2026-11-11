@@ -19,7 +19,7 @@
   "devDependencies": {
     "@rspack/cli": "2.3.0",
     "@rspack/core": "2.3.0",
-    "@types/node": "24.19.2",
+    "@types/node": "26.6.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "oxlint": "1.90.0",
