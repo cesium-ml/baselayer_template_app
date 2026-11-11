@@ -14,6 +14,7 @@ import { store } from "../store";
 import Examples from "./Examples";
 import PoweredByBaselayer from "./PoweredByBaselayer";
 import Profile from "./Profile";
+import Services from "./Services";
 
 const messageHandler = setupMessageHandlers(store);
 
@@ -46,6 +47,7 @@ function MainContent({ root }: { root: string }) {
 
       <main>
         <Examples />
+        <Services />
       </main>
 
       <footer className="app-footer">
