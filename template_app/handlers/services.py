@@ -7,6 +7,15 @@ from baselayer.app.handlers import BaseHandler
 from baselayer.tools.memory_usage import SUPERVISORD_CFG, forked_pid, service_memory
 
 
+def memory(name, forked, rss, pss, uss):
+    """All memory of the zygote and other services; only what a forked service adds."""
+    if name == "zygote":
+        return rss
+    if forked and uss is not None:
+        return uss
+    return rss if pss is None else pss
+
+
 def service_info():
     """Return the state and memory use of each supervisor service."""
     options = ClientOptions()
@@ -18,7 +27,7 @@ def service_info():
         name = p["name"] if p["group"] == p["name"] else f"{p['group']}:{p['name']}"
         pid = p["pid"] or None
         service_pid = pid and forked_pid(pid)
-        _, rss, _, uss = service_memory(name, pid) if pid else (0, 0, None, None)
+        _, rss, pss, uss = service_memory(name, pid) if pid else (0, 0, None, None)
         services.append(
             {
                 "name": name,
@@ -26,8 +35,7 @@ def service_info():
                 "pid": service_pid or pid,
                 "forked": service_pid is not None,
                 "uptime": p["now"] - p["start"] if pid else None,
-                # The zygote's memory is shared; each other service adds its own
-                "memory": rss if name == "zygote" or uss is None else uss,
+                "memory": memory(name, service_pid is not None, rss, pss, uss),
             }
         )
 

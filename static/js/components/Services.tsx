@@ -18,20 +18,18 @@ function formatUptime(seconds: number | null) {
   return m > 0 ? `${m} min` : `${seconds} s`;
 }
 
-function formatMemory(service: Service, hasZygote: boolean) {
+function formatMemory(service: Service) {
   const mb = (service.memory / 2 ** 20).toFixed(0);
   if (service.name === "zygote") {
     return `${mb} MB shared`;
   }
-  return hasZygote ? `+ ${mb} MB` : `${mb} MB`;
+  return service.forked ? `+ ${mb} MB` : `${mb} MB`;
 }
 
 function ServiceRow({
-  hasZygote,
   maxMemory,
   service,
 }: {
-  hasZygote: boolean;
   maxMemory: number;
   service: Service;
 }) {
@@ -57,7 +55,7 @@ function ServiceRow({
                 style={{ width: `${(100 * service.memory) / maxMemory}%` }}
               />
             </div>
-            <span>{formatMemory(service, hasZygote)}</span>
+            <span>{formatMemory(service)}</span>
           </div>
         )}
       </td>
@@ -84,7 +82,6 @@ function Services() {
   const forked = services.filter((s) => s.forked);
   const others = services.filter((s) => s.name !== "zygote" && !s.forked);
   const maxMemory = Math.max(1, ...services.map((s) => s.memory));
-  const hasZygote = zygote.length > 0;
 
   return (
     <section className="card">
@@ -104,7 +101,6 @@ function Services() {
           <tbody>
             {[...zygote, ...forked, ...others].map((service) => (
               <ServiceRow
-                hasZygote={hasZygote}
                 key={service.name}
                 maxMemory={maxMemory}
                 service={service}
