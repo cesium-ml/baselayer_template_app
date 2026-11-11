@@ -1,23 +1,19 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { Provider } from "react-redux";
+import { useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 
-import WebSocket from "baselayer/components/WebSocket";
 import { Notifications } from "baselayer/components/Notifications";
-
-import { store } from "../store";
-import { setupMessageHandlers } from "../customMessageHandler";
-
-// Components and containers
+import WebSocket from "baselayer/components/WebSocket";
 
 import * as Action from "../actions";
-import Profile from "./Profile";
+import { setupMessageHandlers } from "../customMessageHandler";
+import { store } from "../store";
 import Examples from "./Examples";
+import Profile from "./Profile";
 
 const messageHandler = setupMessageHandlers(store);
 
-function MainContent({ root }) {
+function MainContent({ root }: { root: string }) {
   useEffect(() => {
     store.dispatch(Action.hydrate());
   }, []);
@@ -37,7 +33,7 @@ function MainContent({ root }) {
         <Profile />
       </div>
 
-      <Notifications style={{}} />
+      <Notifications />
 
       <h1>Baselayer Template Application</h1>
       <p>Hi, and welcome to Baselayer!</p>
@@ -46,11 +42,8 @@ function MainContent({ root }) {
     </>
   );
 }
-MainContent.propTypes = {
-  root: PropTypes.string.isRequired,
-};
 
-const content = ReactDOM.createRoot(document.getElementById("content"));
+const content = ReactDOM.createRoot(document.getElementById("content")!);
 content.render(
   <Provider store={store}>
     <MainContent root={window.location.host + window.location.pathname} />

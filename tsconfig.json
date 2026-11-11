@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "paths": {
+      "baselayer/*": ["./baselayer/static/js/*"]
+    },
+    "types": ["node"]
+  },
+  "include": ["static/js", "rspack.config.ts"]
+}
