@@ -8,6 +8,7 @@ import WebSocket from "baselayer/components/WebSocket";
 import * as Action from "../actions";
 import { setupMessageHandlers } from "../customMessageHandler";
 import { store } from "../store";
+
 import Examples from "./Examples";
 import PoweredByBaselayer from "./PoweredByBaselayer";
 import Profile from "./Profile";
@@ -48,7 +49,11 @@ function MainContent({ root }: { root: string }) {
   );
 }
 
-const content = ReactDOM.createRoot(document.getElementById("content")!);
+const container = document.getElementById("content");
+if (!container) {
+  throw new Error('static/index.html has no element with id "content"');
+}
+const content = ReactDOM.createRoot(container);
 content.render(
   <Provider store={store}>
     <MainContent root={window.location.host + window.location.pathname} />

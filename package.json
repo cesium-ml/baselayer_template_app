@@ -17,7 +17,7 @@
     "react-redux": "9.3.1"
   },
   "devDependencies": {
-    "@dr.pogodin/eslint-configs": "0.1.4",
+    "@dr.pogodin/eslint-configs": "0.3.9",
     "@rspack/cli": "2.3.0",
     "@rspack/core": "2.3.0",
     "@types/node": "24.19.2",
