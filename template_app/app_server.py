@@ -4,6 +4,7 @@ from baselayer.app import model_util, models
 
 from .handlers.example_computation import ExampleComputationHandler
 from .handlers.push_notification import PushNotificationHandler
+from .handlers.services import ServicesHandler
 
 
 def make_app(cfg, baselayer_handlers, baselayer_settings, process=None, env=None):
@@ -36,6 +37,7 @@ def make_app(cfg, baselayer_handlers, baselayer_settings, process=None, env=None
         #    (r'/some_url(/.*)?', MyTornadoHandler),
         (r"/example_compute", ExampleComputationHandler),
         (r"/push_notification", PushNotificationHandler),
+        (r"/services", ServicesHandler),
     ]
 
     settings = baselayer_settings

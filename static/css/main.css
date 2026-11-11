@@ -141,3 +141,75 @@ form {
   font-size: 0.85rem;
   text-align: center;
 }
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table.services {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.services th,
+.services td {
+  padding: 0.4rem 0.75rem 0.4rem 0;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+.services th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.services .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.services .forked td:first-child {
+  padding-left: 0.5rem;
+}
+
+.services .branch {
+  margin-right: 0.4rem;
+  color: var(--muted);
+}
+
+.state {
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 20%, transparent);
+  font-size: 0.8rem;
+}
+
+.state-running {
+  background: color-mix(in srgb, #2e9d4f 25%, transparent);
+}
+
+.state-fatal,
+.state-backoff,
+.state-exited {
+  background: color-mix(in srgb, #d0342c 25%, transparent);
+}
+
+.memory {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  min-width: 10rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.memory-track {
+  width: 6rem;
+}
+
+.memory-bar {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--accent);
+}

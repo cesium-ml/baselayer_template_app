@@ -44,10 +44,34 @@ export function exampleReducer(
   return state;
 }
 
+export type Service = {
+  forked: boolean;
+  memory: number;
+  name: string;
+  pid: number | null;
+  state: string;
+  uptime: number | null;
+};
+
+export type ServicesState = {
+  services: Service[];
+};
+
+export function servicesReducer(
+  state: ServicesState = { services: [] },
+  action: UnknownAction,
+): ServicesState {
+  if (isDataAction<ServicesState>(action, Action.FETCH_SERVICES_OK)) {
+    return action.data;
+  }
+  return state;
+}
+
 const root = combineReducers({
   examples: exampleReducer,
   notifications: notificationsReducer,
   profile: profileReducer,
+  services: servicesReducer,
   // add your own reducers here
 });
 
