@@ -19,7 +19,7 @@ function ExampleCompute() {
   };
 
   const resultItems = results.map((result, index) => (
-    // eslint-disable-next-line react/no-array-index-key
+    // oxlint-disable-next-line react/no-array-index-key -- results are only appended
     <li key={index}>{result.join(", ")}</li>
   ));
 

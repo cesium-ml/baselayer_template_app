@@ -44,11 +44,11 @@ repos:
 
   - repo: local
     hooks:
-      - id: eslint
-        name: eslint
+      - id: oxlint
+        name: oxlint
         entry: >-
-          sh -c '[ -x node_modules/.bin/eslint ] || { echo "ESLint not found: run pnpm install"; exit 1; };
-          exec node_modules/.bin/eslint "$@"' eslint
+          sh -c '[ -x node_modules/.bin/oxlint ] || { echo "oxlint not found: run pnpm install"; exit 1; };
+          exec node_modules/.bin/oxlint --type-aware --deny-warnings "$@"' oxlint
         language: system
         files: ^static/js/.*\.[jt]sx?$
         types: [file]
